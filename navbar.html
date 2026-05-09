@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Balloon Artist & Decorative Arch Studio | Avant-Garde Navbar</title>
+  <!-- Google Fonts: Ultra premium pairing - Playfair Display + Sora (modern geometric) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (sharp & solid) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), color 0.2s ease, border-color 0.2s ease, transform 0.2s;
+    }
+
+    /* ----- LUXURY LIGHT MODE (Dribbble-quality) ----- */
+    :root {
+      --bg-primary: #0c0b14;
+      --bg-secondary: #05040a;
+      --surface-glass: rgba(20, 18, 30, 0.6);
+      --text-primary: #f0eef7;
+      --text-secondary: #ccc9e6;
+      --text-muted: #8f8ba8;
+      --border-lux: rgba(255, 255, 255, 0.12);
+      --accent-gold: #ff7eb3;
+      --accent-terracotta: #ff758c;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
+      --btn-outline: #ff7eb3;
+      --icon-hover-bg: rgba(255, 126, 179, 0.1);
+      --card-glow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
+      --scroll-track: #05040a;
+      --scroll-thumb: #ff7eb3;
+      --dropdown-bg: rgba(20, 18, 30, 0.98);
+    }
+
+    body.dark {
+      --bg-primary: #0c0b14;
+      --bg-secondary: #05040a;
+      --surface-glass: rgba(20, 18, 30, 0.8);
+      --text-primary: #f0eef7;
+      --text-secondary: #ccc9e6;
+      --text-muted: #8f8ba8;
+      --border-lux: rgba(255, 255, 255, 0.12);
+      --accent-gold: #ff7eb3;
+      --accent-terracotta: #ff758c;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.6);
+      --btn-outline: #ff7eb3;
+      --icon-hover-bg: rgba(255, 126, 179, 0.1);
+      --card-glow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+      --scroll-track: #05040a;
+      --scroll-thumb: #ff7eb3;
+      --dropdown-bg: rgba(20, 18, 30, 0.98);
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background-color: #0c0b14;
+      background-image: radial-gradient(circle at 0% 30%, #110e1c, #05040a);
+      color: #f0eef7;
+      font-weight: 400;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      padding-top: 72px;
+    }
+
+    /* Floating orbs (balloon dust) from demo.html */
+    .floating-orb {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255, 200, 220, 0.4) 0%, rgba(255, 105, 180, 0.1) 80%);
+      border-radius: 50%;
+      filter: blur(25px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Typography: Elegant headings + modern body */
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 12px rgba(255, 105, 180, 0.3);
+      transition: all 0.2s;
+    }
+    .logo-sub {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* premium navbar - REDUCED SIZE */
+    .navbar {
+      background: rgba(20, 18, 30, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
+      padding:   0.8rem var(--global-padding-x);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* brand */
+    .nav-brand {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      z-index: 101;
+    }
+    .brand-wrapper {
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    /* center links (DESKTOP) with HOME DROPDOWN hover - REDUCED FONT SIZE TO FIT SINGLE LINE */
+    .nav-links-center {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-links-center a {
+      font-family: 'Sora', sans-serif;
+      font-weight: 550;
+      font-size: 0.72rem;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.25s ease;
+      position: relative;
+      padding: 0.25rem 0;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .nav-links-center a:hover {
+      color: #ff7eb3;
+    }
+    .nav-links-center a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      border-radius: 2px;
+      transition: width 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .nav-links-center a:hover::after {
+      width: 100%;
+    }
+    .nav-links-center a.active {
+      color: #ff7eb3;
+    }
+    .nav-links-center a.active::after {
+      width: 100%;
+    }
+    .mobile-nav-links a.active, .mobile-home-item.active .home-main-link {
+      color: var(--accent-terracotta);
+    }
+    .mobile-nav-links a.active i {
+      color: var(--accent-terracotta);
+    }
+    /* DROPDOWN STYLES for HOME */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--dropdown-bg);
+      backdrop-filter: blur(20px);
+      border-radius: 18px;
+      padding: 0.5rem 0;
+      min-width: 130px;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--border-lux);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.25s ease;
+      z-index: 200;
+    }
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(255, 126, 179, 0.1);
+      color: #ff7eb3;
+      padding-left: 1.3rem;
+    }
+    .dropdown-menu a::after {
+      display: none;
+    }
+
+    /* right side desktop icons & login */
+    .nav-actions {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.7rem;
+      z-index: 101;
+    }
+    .icon-btn {
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+      width: 34px;
+      height: 34px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+      backdrop-filter: blur(4px);
+    }
+    .icon-btn:hover {
+      background: var(--icon-hover-bg);
+      color: var(--accent-terracotta);
+      transform: translateY(-2px);
+    }
+    .btn-login {
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      border: none;
+      padding: 0.6rem 1.6rem;
+      border-radius: 60px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 650;
+      font-size: 0.75rem;
+      letter-spacing: 0.4px;
+      color: #0c0b14;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px -6px rgba(255, 90, 120, 0.4);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -8px rgba(255, 90, 120, 0.6);
+      filter: brightness(1.05);
+    }
+
+    /* hamburger (hidden on wide) - REDUCED SIZE */
+    .hamburger {
+      display: none;
+      background: var(--surface-glass);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-lux);
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      transition: all 0.2s;
+    }
+    .hamburger:hover {
+      background: var(--icon-hover-bg);
+      transform: scale(0.96);
+    }
+
+    /* Book Now Button Styling inside nav-links-center */
+    .book-now-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      border: none;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 650;
+      font-size: 0.7rem;
+      letter-spacing: 0.3px;
+      color: #0c0b14 !important;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(255, 90, 120, 0.25);
+      width: auto;
+      min-width: 80px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .book-now-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 90, 120, 0.45);
+      filter: brightness(1.08);
+      text-decoration: none;
+      color: #0c0b14 !important;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    }
+    .book-now-btn::after {
+      display: none !important;
+    }
+
+    /* ----- PREMIUM MOBILE MENU (GLASS + SCROLLABLE + HOME SUBMENU) ----- */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 82%;
+      max-width: 400px;
+      height: 100vh;
+      background: rgba(20, 18, 30, 0.92);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow: -12px 0 35px rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      padding: 2rem 1.5rem 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-left: 1px solid rgba(255, 255, 255, 0.12);
+      gap: 1.2rem;
+      overflow-y: auto;
+    }
+    .mobile-menu-overlay::-webkit-scrollbar {
+      width: 5px;
+    }
+    .mobile-menu-overlay::-webkit-scrollbar-track {
+      background: var(--scroll-track);
+      border-radius: 10px;
+    }
+    .mobile-menu-overlay::-webkit-scrollbar-thumb {
+      background: var(--scroll-thumb);
+      border-radius: 10px;
+    }
+    .mobile-menu-overlay.open {
+      right: 0;
+    }
+    .close-menu-btn {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      transition: background 0.2s;
+      margin-bottom: 0.2rem;
+    }
+    .close-menu-btn:hover {
+      background: var(--icon-hover-bg);
+    }
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0.2rem;
+      border-top: 1px solid var(--border-lux);
+      padding-top: 1.2rem;
+    }
+    .mobile-nav-links a {
+      font-family: 'Sora', sans-serif;
+      font-weight: 550;
+      font-size: 1rem;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.5rem 0;
+      transition: all 0.2s;
+      border-radius: 20px;
+    }
+    .mobile-nav-links a i {
+      width: 28px;
+      color: var(--accent-terracotta);
+      font-size: 1.1rem;
+    }
+    .mobile-nav-links a:hover {
+      color: var(--accent-terracotta);
+      transform: translateX(6px);
+    }
+    .mobile-book-now {
+      background: var(--accent-gradient);
+      border-radius: 60px;
+      padding: 0.6rem 1rem !important;
+      justify-content: center;
+      margin-top: 0.5rem;
+      color: white !important;
+      font-weight: 700;
+      text-decoration: none !important;
+      width: auto;
+      min-width: 120px;
+      text-align: center;
+    }
+    .mobile-book-now i {
+      color: white !important;
+    }
+    .mobile-book-now:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      text-decoration: none !important;
+      color: white !important;
+    }
+    .mobile-book-now::after {
+      display: none !important;
+    }
+
+    /* HOME dropdown in mobile hover (Home 1 + Home 2) */
+    .mobile-home-item {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .home-main-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      cursor: pointer;
+      font-family: 'Sora', sans-serif;
+      font-weight: 550;
+      font-size: 1rem;
+      color: var(--text-primary);
+      padding: 0.5rem 0;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+    .home-main-link .left-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .home-main-link i:first-child {
+      width: 28px;
+      color: var(--accent-terracotta);
+      font-size: 1.1rem;
+    }
+    .chevron-icon {
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+      color: var(--text-muted);
+    }
+    .home-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out, margin 0.2s;
+      background: var(--bg-secondary);
+      border-radius: 18px;
+      margin-left: 36px;
+      margin-top: 0px;
+    }
+    .home-submenu a {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      gap: 10px;
+      border-bottom: none;
+    }
+    .mobile-home-item:hover .home-submenu {
+      max-height: 120px;
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+    .mobile-home-item:hover .chevron-icon {
+      transform: rotate(90deg);
+    }
+
+    .mobile-actions-group {
+      margin-top: 0.4rem;
+      padding-top: 1rem;
+      border-top: 2px dashed var(--border-lux);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mobile-action-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-secondary);
+      padding: 0.7rem 1rem;
+      border-radius: 60px;
+      border: 1px solid var(--border-lux);
+      backdrop-filter: blur(4px);
+    }
+    .mobile-action-item span {
+      font-weight: 550;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .mobile-action-item button {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--accent-terracotta);
+      width: 38px;
+      border-radius: 40px;
+      transition: all 0.2s;
+    }
+    .mobile-login-btn {
+      background: var(--accent-gradient);
+      border: none;
+      padding: 0.9rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.95rem;
+      color: white;
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(255, 117, 140, 0.25);
+    }
+    .mobile-login-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.02);
+      box-shadow: 0 12px 22px rgba(255, 117, 140, 0.3);
+    }
+    .overlay-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 1500;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .overlay-bg.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* RTL fine-tune */
+    body[dir="rtl"] .mobile-menu-overlay {
+      right: auto;
+      left: -100%;
+    }
+    body[dir="rtl"] .mobile-menu-overlay.open {
+      right: auto;
+      left: 0;
+    }
+    body[dir="rtl"] .close-menu-btn {
+      align-self: flex-start;
+    }
+    body[dir="rtl"] .mobile-nav-links a:hover {
+      transform: translateX(-6px);
+    }
+    body[dir="rtl"] .home-submenu {
+      margin-left: 0;
+      margin-right: 36px;
+    }
+    body[dir="rtl"] .mobile-home-item:hover .chevron-icon {
+      transform: rotate(-90deg);
+    }
+    body[dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+
+    /* ========= FULLY RESPONSIVE: HAMBURGER MENU ON MOBILE/TABLET ========= */
+    @media screen and (max-width: 1024px) {
+      .nav-links-center {
+        display: none;
+      }
+      .nav-actions .icon-btn,
+      .nav-actions .btn-login {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .nav-actions {
+        gap: 0;
+      }
+      .nav-brand {
+        flex: auto;
+      }
+      .navbar {
+        padding:    0.8rem var(--global-padding-x);
+      }
+    }
+
+    /* Consistent padding across all screen sizes */
+    @media screen and (max-width: 768px) {
+      .navbar {
+        padding:    0.8rem var(--global-padding-x);
+      }
+      .logo-text {
+        font-size: 1.3rem;
+      }
+      .mobile-menu-overlay {
+        width: 85%;
+        padding: 1.5rem 1.2rem;
+      }
+      .hero-section {
+        padding:  2rem 1.5rem;
+      }
+      .grid-portfolio {
+        padding:  0 1.5rem;
+        gap: 1.5rem;
+      }
+      .cta-booking {
+        margin:  1.5rem 1.5rem 2rem;
+      }
+      .footer {
+        padding:  2rem 1.5rem 1rem;
+      }
+      .footer-container {
+        gap: 1.8rem;
+        padding: 0;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .navbar {
+        padding:    0.8rem var(--global-padding-x);
+      }
+      .logo-text {
+        font-size: 1.2rem;
+      }
+      .hero-section {
+        padding:  1.5rem 1rem;
+      }
+      .hero-title {
+        font-size: clamp(1.6rem, 8vw, 2.5rem);
+      }
+      .grid-portfolio {
+        padding:  0 1rem;
+        gap: 1.2rem;
+        grid-template-columns: 1fr;
+      }
+      .studio-card {
+        padding: 1.5rem 1.2rem;
+      }
+      .cta-booking {
+        margin:  1.5rem 1rem 1.8rem;
+      }
+      .btn-premium {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.9rem;
+      }
+      .footer {
+        padding:  1.8rem 1rem 1rem;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .mobile-menu-overlay {
+        width: 90%;
+        padding: 1.2rem 1rem;
+      }
+    }
+
+    /* Desktop large screens - keep max width and consistent padding */
+    @media screen and (min-width: 1400px) {
+      .navbar {
+        padding:    0.8rem var(--global-padding-x);
+      }
+      .hero-section .hero-title,
+      .grid-portfolio,
+      .cta-booking,
+      .footer .footer-container {
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-section {
+        padding-left: calc((100% - 1400px) / 2 + 2.5rem);
+        padding-right: calc((100% - 1400px) / 2 + 2.5rem);
+      }
+      .grid-portfolio {
+        padding-left: calc((100% - 1400px) / 2 + 2.5rem);
+        padding-right: calc((100% - 1400px) / 2 + 2.5rem);
+      }
+      .footer {
+        padding-left: calc((100% - 1400px) / 2 + 2.5rem);
+        padding-right: calc((100% - 1400px) / 2 + 2.5rem);
+      }
+    }
+
+    /* ========= UNIQUE PRO DESIGN: Gallery & card styles ========= */
+    .hero-section {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: radial-gradient(circle at 10% 30%, var(--bg-secondary) 0%, var(--bg-primary) 90%);
+      width: 100%;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      background: var(--accent-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      max-width: 100%;
+    }
+    .grid-portfolio {
+      max-width: 1280px;
+      margin: 2.5rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      padding: 0 1.8rem;
+      width: 100%;
+    }
+    .studio-card {
+      background: rgba(20, 18, 30, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 2.5rem 1.8rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      text-align: center;
+      width: 100%;
+    }
+    .studio-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-terracotta);
+      box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.2);
+    }
+    .studio-card i {
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+    .studio-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+    .card-btn {
+      margin-top: 1.2rem;
+      background: transparent;
+      border: 1px solid var(--accent-terracotta);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--accent-terracotta);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .card-btn:hover {
+      background: var(--accent-terracotta);
+      color: white;
+    }
+    .cta-booking {
+      text-align: center;
+      margin: 2rem auto 2.5rem;
+      width: 100%;
+    }
+    .btn-premium {
+      background: var(--accent-gradient);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 80px;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: 'Sora', sans-serif;
+      color: white;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 8px 20px rgba(255, 117, 140, 0.3);
+    }
+    .btn-premium:hover {
+      transform: scale(1.02);
+      filter: brightness(1.02);
+      box-shadow: 0 12px 26px rgba(255, 117, 140, 0.4);
+    }
+
+    /* ========= PREMIUM FOOTER SECTION ========= */
+    .footer {
+      background: rgba(20, 18, 30, 0.6);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4rem 2rem 2rem;
+      margin-top: 4rem;
+      font-family: 'Sora', sans-serif;
+      width: 100%;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      color: #ff7eb3;
+      letter-spacing: -0.2px;
+    }
+    .footer-col p, .footer-col ul {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-col ul li a {
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      font-size: 0.85rem;
+    }
+    .footer-col ul li a:hover {
+      color: var(--accent-terracotta);
+      transform: translateX(4px);
+      display: inline-block;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-lux);
+      color: var(--accent-terracotta);
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+    .social-links a:hover {
+      background: var(--accent-terracotta);
+      color: white;
+      transform: translateY(-3px);
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-lux);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .newsletter-input {
+      display: flex;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .newsletter-input input {
+      flex: 1;
+      padding: 0.5rem 0.8rem;
+      border-radius: 40px 0 0 40px;
+      border: 1px solid var(--border-lux);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.75rem;
+      outline: none;
+      min-width: 0;
+    }
+    .newsletter-input button {
+      background: var(--accent-gradient);
+      border: none;
+      padding: 0 1rem;
+      border-radius: 0 40px 40px 0;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.7rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .newsletter-input button:hover {
+      filter: brightness(1.05);
+    }
+    body[dir="rtl"] .newsletter-input input {
+      border-radius: 0 40px 40px 0;
+    }
+    body[dir="rtl"] .newsletter-input button {
+      border-radius: 40px 0 0 40px;
+    }
+    body[dir="rtl"] .footer-col ul li a:hover {
+      transform: translateX(-4px);
+    }
+  </style>
+
+  <!-- GLOBAL RESPONSIVE & PADDING STANDARDIZATION -->
+  <style id="global-responsive-fixes">
+    /* 1. Global Overflow Prevention */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    /* 2. Standardized Global Padding Token */
+    @media (min-width: 1400px) { :root { --global-padding-x: calc((100% - 1400px) / 2 + 3rem); } }
+
+    :root {
+      --global-padding-x: 1rem;
+    }
+    @media (min-width: 768px) { :root { --global-padding-x: 2rem; } }
+    @media (min-width: 1200px) { :root { --global-padding-x: 3rem; } }
+
+    /* 3. Base interior containers get exactly ONE layer of perfect padding */
+    .container-custom, 
+    .nav-container, 
+    .footer-container {
+       padding-left: var(--global-padding-x) !important;
+       padding-right: var(--global-padding-x) !important;
+       max-width: 1280px !important;
+       margin-left: auto !important;
+       margin-right: auto !important;
+       width: 100% !important;
+       box-sizing: border-box !important;
+    }
+
+    /* 4. Sections without container-custom, and standalone wrappers get padding */
+    section:not(:has(.container-custom)),
+    .login-page-container,
+    .grid-portfolio,
+    .h2-cta-wrapper {
+       padding-left: var(--global-padding-x) !important;
+       padding-right: var(--global-padding-x) !important;
+       box-sizing: border-box !important;
+       width: 100% !important;
+    }
+
+    /* 5. Wrappers that contain a padded container get zero padding themselves to avoid doubling */
+    section:has(.container-custom),
+    nav, footer, .navbar {
+       padding-left:  0 !important;
+       padding-right:  0 !important;
+    }
+
+    /* Exception: horizontal scroll section must bleed right */
+    section.h2-collections {
+       padding-right: 0 !important;
+       padding-left: var(--global-padding-x) !important;
+    }
+    
+    /* 6. Responsive flexible layouts (Mobile/Tablet optimizations) */
+    img, video, iframe {
+       max-width: 100% !important;
+       height: auto;
+    }
+    
+    .floating-orb {
+       max-width: 100vw;
+       overflow: hidden;
+    }
+
+    /* Generic Flex/Grid fixes for inline styles to ensure stacking */
+    @media (max-width: 992px) {
+       .hero-h2, .zigzag-row, .h2-hero-images {
+         grid-template-columns: 1fr !important;
+         text-align: center;
+       }
+       .h2-hero-text h1 { font-size: 3rem !important; }
+       .zigzag-row { direction: ltr !important; }
+       .zigzag-row > * { direction: ltr !important; }
+       .h2-img-wrap:nth-child(1) { transform: none !important; }
+       
+       /* Ensure inline grid/flex stack on tablet */
+       [style*="grid-template-columns: 1fr 1fr"]:not(.gallery-grid) {
+          grid-template-columns: 1fr !important;
+       }
+       [style*="display: flex"][style*="gap: 4rem"] {
+          flex-direction: column !important;
+          gap: 2rem !important;
+       }
+       [style*="display: flex"][style*="gap: 60px"] {
+          flex-direction: column !important;
+          gap: 30px !important;
+       }
+    }
+
+    @media (max-width: 768px) {
+       .h2-stats { flex-direction: column !important; gap: 2rem !important; }
+       .h2-stat-num { font-size: 3rem !important; }
+       .h2-hero-text h1, .login-title, h2, .display-head { font-size: 2.2rem !important; }
+       .login-card { padding: 2rem 1.5rem !important; }
+       .h2-cta-island { padding: 3rem 1.5rem !important; border-radius: 30px !important; }
+       .h2-coll-scroll { padding-right: var(--global-padding-x) !important; }
+       .final-cta { margin: 2rem 1rem !important; padding: 3rem 1rem !important; }
+    }
+  </style>
+
+</head>
+<body dir="ltr">
+  <!-- Floating background orbs from demo.html -->
+  <div class="floating-orb" style="width: 350px; height: 350px; top: -80px; right: -80px; background: radial-gradient(circle, #ffb3d1, #ff6f91); filter: blur(70px);"></div>
+  <div class="floating-orb" style="width: 250px; height: 250px; bottom: 20%; left: -60px; background: radial-gradient(circle, #b77eff, #8f5eff); filter: blur(65px);"></div>
+  <div class="floating-orb" style="width: 400px; height: 400px; right: -100px; top: 40%; background: #ffb6d9; filter: blur(95px); opacity: 0.3;"></div>
+
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="./index.html" class="brand-wrapper" style="text-decoration: none;">
+          <span class="logo-text">🎈 Arch & Balloon</span>
+        </a>
+      </div>
+      <div class="nav-links-center">
+        <div class="nav-item">
+          <a href="#">Home</a>
+          <div class="dropdown-menu">
+            <a href="#" id="home1Link">Home 1</a>
+            <a href="#" id="home2Link">Home 2</a>
+          </div>
+        </div>
+        <a href="#">Portfolio</a>
+        <a href="#">Birthday Packages</a>
+        <a href="#">Corporate Events</a>
+        <a href="#">Pricing</a>
+        <a href="#">Design Consultation</a>
+        <a href="#">Contact Us</a>
+     </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="desktopDarkToggle" aria-label="Dark mode"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn" id="desktopRtlToggle" aria-label="RTL"><i class="fa-solid fa-right-left"></i></button>
+        <a href="login.html" class="btn-login" id="desktopLoginBtn">Login</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="overlay-bg" id="overlayBg"></div>
+  <div class="mobile-menu-overlay" id="mobileMenuPanel">
+    <button class="close-menu-btn" id="closeMobileMenuBtn"><i class="fas fa-arrow-right"></i></button>
+    <div class="mobile-nav-links">
+      <div class="mobile-home-item">
+        <div class="home-main-link">
+          <div class="left-content">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </div>
+          <i class="fas fa-chevron-right chevron-icon"></i>
+        </div>
+        <div class="home-submenu">
+          <a href="#" class="home-sub-link" id="mobileHome1"><i class="fas fa-door-open"></i> Home 1</a>
+          <a href="#" class="home-sub-link" id="mobileHome2"><i class="fas fa-building"></i> Home 2</a>
+        </div>
+      </div>
+      <a href="#"><i class="fas fa-images"></i>Portfolio</a>
+      <a href="#"><i class="fas fa-birthday-cake"></i>Birthday Packages</a>
+      <a href="#"><i class="fas fa-building"></i>Corporate Events</a>
+      <a href="#"><i class="fas fa-tag"></i> Pricing </a>
+      <a href="#"><i class="fas fa-tag"></i> Design Consultation </a>
+      <a href="#"><i class="fas fa-calendar-alt"></i>Contact Us</a>
+    </div>
+    <div class="mobile-actions-group">
+      <div class="mobile-action-item">
+        <span><i class="fas fa-moon" style="margin-right: 8px;"></i> Dark Mode</span>
+        <button id="mobileDarkToggleBtn"><i class="fas fa-adjust"></i></button>
+      </div>
+      <div class="mobile-action-item">
+        <span><i class="fas fa-exchange-alt" style="margin-right: 8px;"></i> RTL / LTR</span>
+        <button id="mobileRtlToggleBtn"><i class="fa-solid fa-right-left"></i></button>
+      </div>
+      <a href="login.html" class="mobile-login-btn" id="mobileLoginBtn"><i class="fas fa-sparkle"></i>Login</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4><a href="./index.html" style="text-decoration: none; color: inherit;">Arch & Balloon</a></h4>
+        <p>Creating breathtaking balloon installations and decorative arches for weddings, birthdays, and corporate events since 2015.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Birthday Packages</a></li>
+          <li><a href="#">Corporate Events</a></li>
+          <li><a href="#">Pricing Guide</a></li>
+          <li><a href="#">Design Consultation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Contact Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe for exclusive offers and balloon decor inspiration.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Your email address">
+          <button>Subscribe</button>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.7rem;">✨ Get 10% off your first booking</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const body = document.body;
+      const desktopDark = document.getElementById('desktopDarkToggle');
+      const desktopRtl = document.getElementById('desktopRtlToggle');
+      const desktopLogin = document.getElementById('desktopLoginBtn');
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenuPanel');
+      const overlayBg = document.getElementById('overlayBg');
+      const closeMobile = document.getElementById('closeMobileMenuBtn');
+      const mobileDark = document.getElementById('mobileDarkToggleBtn');
+      const mobileRtl = document.getElementById('mobileRtlToggleBtn');
+      const mobileLogin = document.getElementById('mobileLoginBtn');
+
+      function setDarkMode(isDark) {
+        if(isDark) {
+          body.classList.add('dark');
+          localStorage.setItem('balloonTheme', 'dark');
+        } else {
+          body.classList.remove('dark');
+          localStorage.setItem('balloonTheme', 'light');
+        }
+        updateDarkIcons(isDark);
+      }
+      function updateDarkIcons(darkActive) {
+        const deskIcon = desktopDark?.querySelector('i');
+        const mobIcon = mobileDark?.querySelector('i');
+        if(deskIcon) {
+          if(darkActive) { deskIcon.classList.remove('fa-moon'); deskIcon.classList.add('fa-sun'); }
+          else { deskIcon.classList.remove('fa-sun'); deskIcon.classList.add('fa-moon'); }
+        }
+        if(mobIcon) {
+          if(darkActive) { mobIcon.classList.remove('fa-moon'); mobIcon.classList.add('fa-sun'); }
+          else { mobIcon.classList.remove('fa-sun'); mobIcon.classList.add('fa-moon'); }
+        }
+      }
+      const savedTheme = localStorage.getItem('balloonTheme');
+      if(savedTheme === 'dark') setDarkMode(true);
+      else if(savedTheme === 'light') setDarkMode(false);
+      else setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if(desktopDark) desktopDark.addEventListener('click', () => setDarkMode(!body.classList.contains('dark')));
+      if(mobileDark) mobileDark.addEventListener('click', () => setDarkMode(!body.classList.contains('dark')));
+
+      function setDirection(dir) {
+        document.documentElement.setAttribute('dir', dir);
+        body.setAttribute('dir', dir);
+        localStorage.setItem('balloonDir', dir);
+        const deskIconRtl = desktopRtl?.querySelector('i');
+        const mobIconRtl = mobileRtl?.querySelector('i');
+        if(deskIconRtl) deskIconRtl.style.transform = dir === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)';
+        if(mobIconRtl) mobIconRtl.style.transform = dir === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)';
+      }
+      const savedDir = localStorage.getItem('balloonDir');
+      setDirection(savedDir === 'rtl' ? 'rtl' : 'ltr');
+      function toggleDir() { setDirection(document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl'); }
+      if(desktopRtl) desktopRtl.addEventListener('click', toggleDir);
+      if(mobileRtl) mobileRtl.addEventListener('click', toggleDir);
+
+      if(mobileLogin) mobileLogin.addEventListener('click', () => { closePanel(); });
+
+      function openPanel() { mobileMenu.classList.add('open'); overlayBg.classList.add('active'); document.body.style.overflow = 'hidden'; }
+      function closePanel() { mobileMenu.classList.remove('open'); overlayBg.classList.remove('active'); document.body.style.overflow = ''; }
+      if(hamburger) hamburger.addEventListener('click', openPanel);
+      if(closeMobile) closeMobile.addEventListener('click', closePanel);
+      if(overlayBg) overlayBg.addEventListener('click', closePanel);
+
+
+      document.querySelectorAll('.studio-card .card-btn').forEach(btn => {
+        btn.addEventListener('click', () => alert("✨ Discover bespoke balloon artistry and arch designs."));
+      });
+      const consult = document.getElementById('globalConsultBtn');
+      if(consult) consult.addEventListener('click', () => alert("🎈 Schedule a luxury design consultation."));
+      window.addEventListener('resize', () => { if(window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) closePanel(); });
+      
+      const subscribeBtn = document.querySelector('.newsletter-input button');
+      if(subscribeBtn) {
+        subscribeBtn.addEventListener('click', () => {
+          alert("🎈 Thank you for subscribing! You'll receive exclusive offers and balloon decor inspiration.");
+        });
+      }
+
+      // Small floating balloons dynamic from demo.html
+      const floatingElements = document.querySelectorAll('.floating-orb');
+      setInterval(() => {
+        floatingElements.forEach((orb, idx) => {
+          let moveX = (Math.sin(Date.now() * 0.001 * (idx+1)) * 8);
+          let moveY = (Math.cos(Date.now() * 0.0012 * (idx+1)) * 6);
+          orb.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+      }, 100);
+    })();
+  </script>
+</body>
+</html>

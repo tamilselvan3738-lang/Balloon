@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Balloon Artist & Decorative Arch Studio | Avant-Garde Navbar</title>
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <!-- Google Fonts: Ultra premium pairing - Playfair Display + Sora (modern geometric) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (sharp & solid) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), color 0.2s ease, border-color 0.2s ease, transform 0.2s;
+      max-width: 100%;
+      overflow-wrap: break-word;
+    }
+
+    /* ----- LUXURY LIGHT MODE (Dribbble-quality) ----- */
+    :root {
+      --bg-primary: #0c0b14;
+      --bg-secondary: #05040a;
+      --surface-glass: rgba(20, 18, 30, 0.6);
+      --text-primary: #f0eef7;
+      --text-secondary: #ccc9e6;
+      --text-muted: #8f8ba8;
+      --border-lux: rgba(255, 255, 255, 0.12);
+      --accent-gold: #ff7eb3;
+      --accent-terracotta: #ff758c;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
+      --btn-outline: #ff7eb3;
+      --icon-hover-bg: rgba(255, 126, 179, 0.1);
+      --card-glow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
+      --scroll-track: #05040a;
+      --scroll-thumb: #ff7eb3;
+      --dropdown-bg: rgba(20, 18, 30, 0.98);
+    }
+
+    body.dark {
+      --bg-primary: #000000;
+      --bg-secondary: #000000;
+      --surface-glass: rgba(0, 0, 0, 0.8);
+      --text-primary: #f0eef7;
+      --text-secondary: #ccc9e6;
+      --text-muted: #8f8ba8;
+      --border-lux: rgba(255, 255, 255, 0.12);
+      --accent-gold: #ff7eb3;
+      --accent-terracotta: #ff758c;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.6);
+      --btn-outline: #ff7eb3;
+      --icon-hover-bg: rgba(255, 126, 179, 0.1);
+      --card-glow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+      --scroll-track: #000000;
+      --scroll-thumb: #ff7eb3;
+      --dropdown-bg: rgba(0, 0, 0, 0.98);
+      background-color: #000000 !important;
+      background-image: none !important;
+    }
+
+    body.dark section {
+      background-color: #000000 !important;
+      background-image: none !important;
+    }
+
+    body.dark .navbar,
+    body.dark .footer {
+      background: rgba(0, 0, 0, 0.8) !important;
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background-color: #0c0b14;
+      background-image: radial-gradient(circle at 0% 30%, #110e1c, #05040a);
+      color: #f0eef7;
+      font-weight: 400;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      padding-top: 72px;
+    }
+
+    /* Floating orbs (balloon dust) - improved for responsiveness */
+    .floating-orb {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255, 200, 220, 0.4) 0%, rgba(255, 105, 180, 0.1) 80%);
+      border-radius: 50%;
+      filter: blur(25px);
+      pointer-events: none;
+      z-index: 0;
+      max-width: 100vw;
+    }
+
+    /* Typography: Elegant headings + modern body */
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 12px rgba(255, 105, 180, 0.3);
+      transition: all 0.2s;
+    }
+    .logo-sub {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* premium navbar - REDUCED SIZE */
+    .navbar {
+      background: rgba(20, 18, 30, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
+      padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 5vw, 2rem);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 clamp(1rem, 3vw, 2rem);
+      margin: 0 auto;
+    }
+
+    /* brand */
+    .nav-brand {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      z-index: 101;
+    }
+    .brand-wrapper {
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    /* center links (DESKTOP) with HOME DROPDOWN hover - REDUCED FONT SIZE TO FIT SINGLE LINE */
+    .nav-links-center {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-links-center a {
+      font-family: 'Sora', sans-serif;
+      font-weight: 550;
+      font-size: 0.72rem;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.25s ease;
+      position: relative;
+      padding: 0.25rem 0;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .nav-links-center a:hover {
+      color: #ff7eb3;
+    }
+    .nav-links-center a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      border-radius: 2px;
+      transition: width 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .nav-links-center a:hover::after {
+      width: 100%;
+    }
+    .nav-links-center a.active {
+      color: #ff7eb3;
+    }
+    .nav-links-center a.active::after {
+      width: 100%;
+    }
+    .mobile-nav-links a.active, .mobile-home-item.active .home-main-link {
+      color: var(--accent-terracotta);
+    }
+    .mobile-nav-links a.active i {
+      color: var(--accent-terracotta);
+    }
+    .nav-links-center a.active {
+      color: #ff7eb3;
+    }
+    .nav-links-center a.active::after {
+      width: 100%;
+    }
+    .mobile-nav-links a.active, .mobile-home-item.active .home-main-link {
+      color: var(--accent-terracotta);
+    }
+    .mobile-nav-links a.active i {
+      color: var(--accent-terracotta);
+    }
+    /* DROPDOWN STYLES for HOME */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--dropdown-bg);
+      backdrop-filter: blur(20px);
+      border-radius: 18px;
+      padding: 0.5rem 0;
+      min-width: 130px;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--border-lux);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.25s ease;
+      z-index: 200;
+    }
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(255, 126, 179, 0.1);
+      color: #ff7eb3;
+      padding-left: 1.3rem;
+    }
+    .dropdown-menu a::after {
+      display: none;
+    }
+
+    /* right side desktop icons & login */
+    .nav-actions {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.7rem;
+      z-index: 101;
+    }
+    .icon-btn {
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+      width: 34px;
+      height: 34px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+      backdrop-filter: blur(4px);
+    }
+    .icon-btn:hover {
+      background: var(--icon-hover-bg);
+      color: var(--accent-terracotta);
+      transform: translateY(-2px);
+    }
+    .btn-login {
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      border: none;
+      padding: 0.6rem 1.6rem;
+      border-radius: 60px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 650;
+      font-size: 0.75rem;
+      letter-spacing: 0.4px;
+      color: #0c0b14;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px -6px rgba(255, 90, 120, 0.4);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -8px rgba(255, 90, 120, 0.6);
+      filter: brightness(1.05);
+    }
+
+    /* hamburger (hidden on wide) - REDUCED SIZE */
+    .hamburger {
+      display: none;
+      background: var(--surface-glass);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-lux);
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      transition: all 0.2s;
+    }
+    .hamburger:hover {
+      background: var(--icon-hover-bg);
+      transform: scale(0.96);
+    }
+
+    /* Book Now Button Styling inside nav-links-center */
+    .book-now-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      border: none;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 650;
+      font-size: 0.7rem;
+      letter-spacing: 0.3px;
+      color: #0c0b14 !important;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(255, 90, 120, 0.25);
+      width: auto;
+      min-width: 80px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .book-now-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 90, 120, 0.45);
+      filter: brightness(1.08);
+      text-decoration: none;
+      color: #0c0b14 !important;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    }
+    .book-now-btn::after {
+      display: none !important;
+    }
+
+    /* ----- PREMIUM MOBILE MENU (GLASS + SCROLLABLE + HOME SUBMENU) ----- */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 82%;
+      max-width: 400px;
+      height: 100vh;
+      background: rgba(20, 18, 30, 0.92);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow: -12px 0 35px rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      padding: 2rem 1.5rem 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-left: 1px solid rgba(255, 255, 255, 0.12);
+      gap: 1.2rem;
+      overflow-y: auto;
+    }
+    .mobile-menu-overlay::-webkit-scrollbar {
+      width: 5px;
+    }
+    .mobile-menu-overlay::-webkit-scrollbar-track {
+      background: var(--scroll-track);
+      border-radius: 10px;
+    }
+    .mobile-menu-overlay::-webkit-scrollbar-thumb {
+      background: var(--scroll-thumb);
+      border-radius: 10px;
+    }
+    .mobile-menu-overlay.open {
+      right: 0;
+    }
+    .close-menu-btn {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      transition: background 0.2s;
+      margin-bottom: 0.2rem;
+    }
+    .close-menu-btn:hover {
+      background: var(--icon-hover-bg);
+    }
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0.2rem;
+      border-top: 1px solid var(--border-lux);
+      padding-top: 1.2rem;
+    }
+    .mobile-nav-links a {
+      font-family: 'Sora', sans-serif;
+      font-weight: 550;
+      font-size: 1rem;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.5rem 0;
+      transition: all 0.2s;
+      border-radius: 20px;
+    }
+    .mobile-nav-links a i {
+      width: 28px;
+      color: var(--accent-terracotta);
+      font-size: 1.1rem;
+    }
+    .mobile-nav-links a:hover {
+      color: var(--accent-terracotta);
+      transform: translateX(6px);
+    }
+    .mobile-book-now {
+      background: var(--accent-gradient);
+      border-radius: 60px;
+      padding: 0.6rem 1rem !important;
+      justify-content: center;
+      margin-top: 0.5rem;
+      color: white !important;
+      font-weight: 700;
+      text-decoration: none !important;
+      width: auto;
+      min-width: 120px;
+      text-align: center;
+    }
+    .mobile-book-now i {
+      color: white !important;
+    }
+    .mobile-book-now:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      text-decoration: none !important;
+      color: white !important;
+    }
+    .mobile-book-now::after {
+      display: none !important;
+    }
+
+    /* HOME dropdown in mobile hover (Home 1 + Home 2) */
+    .mobile-home-item {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .home-main-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      cursor: pointer;
+      font-family: 'Sora', sans-serif;
+      font-weight: 550;
+      font-size: 1rem;
+      color: var(--text-primary);
+      padding: 0.5rem 0;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+    .home-main-link .left-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .home-main-link i:first-child {
+      width: 28px;
+      color: var(--accent-terracotta);
+      font-size: 1.1rem;
+    }
+    .chevron-icon {
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+      color: var(--text-muted);
+    }
+    .home-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out, margin 0.2s;
+      background: var(--bg-secondary);
+      border-radius: 18px;
+      margin-left: 36px;
+      margin-top: 0px;
+    }
+    .home-submenu a {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      gap: 10px;
+      border-bottom: none;
+    }
+    .mobile-home-item:hover .home-submenu {
+      max-height: 120px;
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+    .mobile-home-item:hover .chevron-icon {
+      transform: rotate(90deg);
+    }
+
+    .mobile-actions-group {
+      margin-top: 0.4rem;
+      padding-top: 1rem;
+      border-top: 2px dashed var(--border-lux);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mobile-action-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-secondary);
+      padding: 0.7rem 1rem;
+      border-radius: 60px;
+      border: 1px solid var(--border-lux);
+      backdrop-filter: blur(4px);
+    }
+    .mobile-action-item span {
+      font-weight: 550;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .mobile-action-item button {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--accent-terracotta);
+      width: 38px;
+      border-radius: 40px;
+      transition: all 0.2s;
+    }
+    .mobile-login-btn {
+      background: var(--accent-gradient);
+      border: none;
+      padding: 0.9rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.95rem;
+      color: white;
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(255, 117, 140, 0.25);
+    }
+    .mobile-login-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.02);
+      box-shadow: 0 12px 22px rgba(255, 117, 140, 0.3);
+    }
+    .overlay-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 1500;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .overlay-bg.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* RTL fine-tune */
+    body[dir="rtl"] .mobile-menu-overlay {
+      right: auto;
+      left: -100%;
+    }
+    body[dir="rtl"] .mobile-menu-overlay.open {
+      right: auto;
+      left: 0;
+    }
+    body[dir="rtl"] .close-menu-btn {
+      align-self: flex-start;
+    }
+    body[dir="rtl"] .mobile-nav-links a:hover {
+      transform: translateX(-6px);
+    }
+    body[dir="rtl"] .home-submenu {
+      margin-left: 0;
+      margin-right: 36px;
+    }
+    body[dir="rtl"] .mobile-home-item:hover .chevron-icon {
+      transform: rotate(-90deg);
+    }
+    body[dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+
+    /* ========= SIMPLIFIED RESPONSIVE: ONLY HAMBURGER, ALL CONTENT AUTO-FITS ========= */
+    @media screen and (max-width: 1024px) {
+      .nav-links-center {
+        display: none;
+      }
+      .nav-actions .icon-btn,
+      .nav-actions .btn-login {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .nav-actions {
+        gap: 0;
+      }
+      .nav-brand {
+        flex: auto;
+      }
+    }
+
+    /* Global auto-fit - balanced side spacing */
+    .container-custom {
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      padding-left: clamp(1.2rem, 6vw, 5rem);
+      padding-right: clamp(1.2rem, 6vw, 5rem);
+      box-sizing: border-box;
+    }
+
+    /* Fluid images and backgrounds */
+    img, div[style*="background-image"], div[style*="background: url"] {
+      max-width: 100%;
+      background-size: cover !important;
+      background-position: center !important;
+    }
+
+    /* Responsive typography and spacing - automatic scaling */
+    @media (max-width: 768px) {
+      .logo-text {
+        font-size: 1.3rem;
+      }
+      .section-spacing {
+        padding: clamp(40px, 10vw, 60px) 0;
+      }
+      .btn-premium {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+      }
+      .display-head {
+        font-size: clamp(2rem, 8vw, 3rem) !important;
+      }
+      h2 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 1.1rem;
+      }
+      .section-spacing {
+        padding: clamp(30px, 8vw, 50px) 0;
+      }
+      .btn-premium {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+      }
+      .hero-image-container {
+        min-height: 250px !important;
+      }
+      .final-cta {
+        margin: 20px 0 40px 0 !important;
+        border-radius: 0 !important;
+        width: 100% !important;
+      }
+    }
+
+    /* ========= UNIFIED RESPONSIVE SYSTEM ========= */
+    .grid-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(20px, 4vw, 40px);
+      width: 100%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(30px, 5vw, 80px);
+      align-items: center;
+      width: 100%;
+    }
+
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(30px, 6vw, 100px);
+      align-items: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(10px, 2vw, 24px);
+      grid-auto-rows: minmax(200px, auto);
+    }
+
+    .section-spacing {
+      padding: clamp(60px, 12vw, 120px) 0;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-blob-img {
+      position: relative;
+      z-index: 2;
+      border-radius: 60% 40% 70% 30% / 40% 55% 45% 60%;
+      box-shadow: 30px 30px 60px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.1);
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      background-size: cover;
+      background-position: center;
+      animation: morph 8s ease-in-out infinite;
+    }
+
+    @keyframes morph {
+      0%, 100% { border-radius: 60% 40% 70% 30% / 40% 55% 45% 60%; }
+      50% { border-radius: 40% 60% 30% 70% / 60% 45% 55% 40%; }
+    }
+
+    .responsive-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Tablet & Smaller handling - Ensuring consistency with the 853px view */
+    @media (max-width: 1024px) {
+      .hero-grid { 
+        grid-template-columns: 1fr; 
+        gap: clamp(40px, 10vw, 60px); 
+      }
+      .grid-2-col { 
+        grid-template-columns: 1fr; 
+        gap: clamp(30px, 8vw, 60px); 
+      }
+      .grid-stack { 
+        grid-template-columns: 1fr 1fr; 
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Mobile Fine-tuning */
+    @media (max-width: 600px) {
+      .grid-stack { 
+        grid-template-columns: 1fr; 
+      }
+      .gallery-grid { 
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(180px, auto); 
+      }
+      .gallery-grid div { 
+        grid-row: span 1 !important; 
+      }
+    }
+
+    /* Prevent any potential overflow */
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .hero-section {
+      padding: 3rem 0;
+      background: radial-gradient(circle at 10% 30%, var(--bg-secondary) 0%, var(--bg-primary) 90%);
+      width: 100%;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      background: var(--accent-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      max-width: 100%;
+    }
+    .grid-portfolio {
+      max-width: 1280px;
+      margin: 2.5rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      width: 100%;
+    }
+    .studio-card {
+      background: rgba(20, 18, 30, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 2.5rem 1.8rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      text-align: center;
+      width: 100%;
+    }
+    .studio-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-terracotta);
+      box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.2);
+    }
+    .studio-card i {
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+    .studio-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+    .card-btn {
+      margin-top: 1.2rem;
+      background: transparent;
+      border: 1px solid var(--accent-terracotta);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--accent-terracotta);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .card-btn:hover {
+      background: var(--accent-terracotta);
+      color: white;
+    }
+    .cta-booking {
+      text-align: center;
+      margin: 2rem auto 2.5rem;
+      width: 100%;
+    }
+    .btn-premium {
+      background: var(--accent-gradient);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 80px;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: 'Sora', sans-serif;
+      color: white;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 8px 20px rgba(255, 117, 140, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .btn-premium:hover {
+      transform: scale(1.02);
+      filter: brightness(1.02);
+      box-shadow: 0 12px 26px rgba(255, 117, 140, 0.4);
+    }
+    .btn-outline-light {
+      background: transparent;
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(4px);
+      color: white;
+      box-shadow: none;
+      padding: 12px 32px;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+    }
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ff7eb3;
+    }
+
+    /* Footer responsive */
+    .footer {
+      background: rgba(20, 18, 30, 0.6);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4rem 2rem 2rem;
+      margin-top: 4rem;
+      font-family: 'Sora', sans-serif;
+      width: 100%;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+      .footer {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+      .footer-container {
+        gap: 1.8rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .footer {
+        padding: 1.8rem 1rem 1rem;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      color: #ff7eb3;
+      letter-spacing: -0.2px;
+    }
+    .footer-col p, .footer-col ul {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-col ul li a {
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      font-size: 0.85rem;
+    }
+    .footer-col ul li a:hover {
+      color: var(--accent-terracotta);
+      transform: translateX(4px);
+      display: inline-block;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-lux);
+      color: var(--accent-terracotta);
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+    .social-links a:hover {
+      background: var(--accent-terracotta);
+      color: white;
+      transform: translateY(-3px);
+    }
+    .newsletter-input {
+      display: flex;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .newsletter-input input {
+      flex: 1;
+      padding: 0.5rem 0.8rem;
+      border-radius: 40px 0 0 40px;
+      border: 1px solid var(--border-lux);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.75rem;
+      outline: none;
+      min-width: 0;
+    }
+    .newsletter-input button {
+      background: var(--accent-gradient);
+      border: none;
+      padding: 0 1rem;
+      border-radius: 0 40px 40px 0;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.7rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .newsletter-input button:hover {
+      filter: brightness(1.05);
+    }
+    body[dir="rtl"] .newsletter-input input {
+      border-radius: 0 40px 40px 0;
+    }
+    body[dir="rtl"] .newsletter-input button {
+      border-radius: 40px 0 0 40px;
+    }
+    body[dir="rtl"] .footer-col ul li a:hover {
+      transform: translateX(-4px);
+    }
+    .homepage {
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    section {
+      position: relative;
+      overflow: hidden;
+    }
+    h1, h2, h3 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .display-head {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    .glow-text {
+      text-shadow: 0 0 12px rgba(255, 105, 180, 0.3);
+    }
+    body, .homepage {
+      overflow-x: hidden;
+      width: 100%;
+    }
+    /* Ensure flex items don't overflow */
+    .responsive-flex > * {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body dir="ltr">
+  <div class="homepage" style="overflow-x: hidden; position: relative;">
+    <!-- Background orbs wrapped in a dedicated hidden-overflow container -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 0;">
+      <div class="floating-orb" style="width: min(350px, 60vw); height: min(350px, 60vw); top: -50px; right: -2%; background: radial-gradient(circle, #ffb3d1, #ff6f91); filter: blur(70px); opacity: 0.6;"></div>
+      <div class="floating-orb" style="width: min(250px, 50vw); height: min(250px, 50vw); bottom: 10%; left: -5%; background: radial-gradient(circle, #b77eff, #8f5eff); filter: blur(65px); opacity: 0.4;"></div>
+      <div class="floating-orb" style="width: min(400px, 70vw); height: min(400px, 70vw); right: -5%; top: 30%; background: #ffb6d9; filter: blur(95px); opacity: 0.2;"></div>
+    </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="./index.html" class="brand-wrapper" style="text-decoration: none;">
+          <span class="logo-text">🎈 Arch & Balloon</span>
+        </a>
+      </div>
+      <div class="nav-links-center">
+        <div class="nav-item">
+          <a href="./index.html" class="active">Home</a>
+          <div class="dropdown-menu">
+            <a href="./index.html" id="home1Link" class="active">Home 1</a>
+            <a href="./home 2.html" id="home2Link">Home 2</a>
+          </div>
+        </div>
+        <a href="./Portfolio.html">Portfolio</a>
+        <a href="./Birthday Packages.html">Birthday Packages</a>
+        <a href="./Corporate Events.html">Corporate Events</a>
+        <a href="./Pricing.html">Pricing</a>
+        <a href="./Design Consultation.html">Design Consultation</a>
+        <a href="./Contact Us.html">Contact Us</a>
+     </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="desktopDarkToggle" aria-label="Dark mode"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn" id="desktopRtlToggle" aria-label="RTL"><i class="fa-solid fa-right-left"></i></button>
+        <a href="login.html" class="btn-login" id="desktopLoginBtn">Login</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="overlay-bg" id="overlayBg"></div>
+  <div class="mobile-menu-overlay" id="mobileMenuPanel">
+    <button class="close-menu-btn" id="closeMobileMenuBtn"><i class="fas fa-arrow-right"></i></button>
+    <div class="mobile-nav-links">
+      <div class="mobile-home-item active">
+        <div class="home-main-link">
+          <div class="left-content">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </div>
+          <i class="fas fa-chevron-right chevron-icon"></i>
+        </div>
+        <div class="home-submenu">
+          <a href="./index.html" class="home-sub-link active" id="mobileHome1"><i class="fas fa-door-open"></i> Home 1</a>
+          <a href="./home 2.html" class="home-sub-link" id="mobileHome2"><i class="fas fa-building"></i> Home 2</a>
+        </div>
+      </div>
+      <a href="./Portfolio.html"><i class="fas fa-images"></i>Portfolio</a>
+      <a href="./Birthday Packages.html"><i class="fas fa-birthday-cake"></i>Birthday Packages</a>
+      <a href="./Corporate Events.html"><i class="fas fa-building"></i>Corporate Events</a>
+      <a href="./Pricing.html"><i class="fas fa-tag"></i> Pricing </a>
+      <a href="./Design Consultation.html"><i class="fas fa-tag"></i> Design Consultation </a>
+      <a href="./Contact Us.html"><i class="fas fa-calendar-alt"></i>Contact Us</a>
+    </div>
+    <div class="mobile-actions-group">
+      <div class="mobile-action-item">
+        <span><i class="fas fa-moon" style="margin-right: 8px;"></i> Dark Mode</span>
+        <button id="mobileDarkToggleBtn"><i class="fas fa-adjust"></i></button>
+      </div>
+      <div class="mobile-action-item">
+        <span><i class="fas fa-exchange-alt" style="margin-right: 8px;"></i> RTL / LTR</span>
+        <button id="mobileRtlToggleBtn"><i class="fa-solid fa-right-left"></i></button>
+      </div>
+      <a href="login.html" class="mobile-login-btn" id="mobileLoginBtn"><i class="fas fa-sparkle"></i>Login</a>
+    </div>
+  </div>
+
+  <!-- 1. HERO SECTION -->
+  <!-- 1. HERO SECTION -->
+  <section class="hero-section" style="min-height: 95vh; display: flex; align-items: center; padding: 4rem 0;">
+    <div class="container-custom">
+      <div class="hero-grid">
+        <div style="animation: fadeUp 0.9s ease-out;">
+          <h1 class="display-head" style="font-size: clamp(2.5rem, 8vw, 5.4rem); line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9); -webkit-background-clip: text; background-clip: text; color: transparent;">
+            Where air becomes <br>art & celebration
+          </h1>
+          <p style="font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-secondary); max-width: 540px; margin-bottom: 40px; font-weight: 400; line-height: 1.6; margin-left: auto; margin-right: auto;">Sculptural arches, dreamy installations, and immersive decor for landmark moments. Tailored for brands, birthdays & beyond.</p>
+          <div class="hero-btns-group responsive-flex">
+            <a href="./Design Consultation.html" class="btn-premium">Book Consultation <i class="fas fa-arrow-right"></i></a>
+            <a href="./Portfolio.html" class="btn-premium btn-outline-light">View Signature Work <i class="fas fa-magic"></i></a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <div class="hero-blob-img" style="background-image: linear-gradient(125deg, rgba(255,120,160,0.3), rgba(100,70,200,0.2)), url('./images/index\ hero.jpg');"></div>
+          <div style="position: absolute; bottom: -20px; left: -20px; width: 140px; height: 140px; background: radial-gradient(circle, #FFB7C5, #FF8AAE); border-radius: 50%; filter: blur(40px); z-index: 1; opacity: 0.6;"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Background accents (hidden or scaled on mobile to prevent overflow) -->
+    <style>
+      .hero-grid { text-align: center; }
+      @keyframes fadeUp { 0% { opacity:0; transform: translateY(30px); } 100% { opacity:1; transform: translateY(0); } }
+      
+      @media (min-width: 1025px) {
+        .hero-grid { text-align: left; }
+        .hero-grid p { margin-left: 0; }
+        .responsive-flex { justify-content: flex-start; }
+      }
+      @media (max-width: 1024px) {
+        .hero-grid { text-align: center !important; }
+        .hero-grid div { text-align: center !important; }
+        .hero-grid p { margin-left: auto; margin-right: auto; }
+        .responsive-flex { justify-content: center; }
+        .hero-image-wrapper { min-height: clamp(300px, 45vh, 500px); margin-bottom: 20px; }
+        .hero-blob-img { min-height: clamp(300px, 45vh, 450px); }
+
+        .hero-btns-group {
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 1.2rem !important;
+        }
+        .hero-btns-group a {
+          width: 100% !important;
+          max-width: 320px !important;
+          justify-content: center !important;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .hero-section { padding: clamp(4rem, 12vw, 8rem) 0 3rem; }
+        .hero-image-wrapper { order: -1; }
+      }
+    </style>
+  </section>
+
+  <!-- 2. SIGNATURE CREATIONS SHOWCASE -->
+  <section class="section-spacing" style="background: radial-gradient(circle at 0% 30%, #110e1c, #05040a);">
+    <div class="container-custom">
+      <div style="text-align: center; margin-bottom: 64px;">
+        <span class="glow-text" style="letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase;">masterpieces</span>
+        <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-top: 12px;">Signature <span style="background: linear-gradient(135deg, #FFB347, #FF6B8B); -webkit-background-clip: text; background-clip: text; color: transparent;">Creations</span></h2>
+      </div>
+      <div class="grid-stack" style="align-items: stretch;">
+        <div style="background: rgba(255,255,245,0.02); border-radius: 64px; backdrop-filter: blur(4px); padding: clamp(20px, 4vw, 32px); border: 1px solid rgba(255,126,179,0.2); transition: all 0.3s; display: flex; flex-direction: column;">
+          <div style="width: 100%; height: clamp(250px, 40vh, 380px); background: url('./images/Galactic\ Arch.jpg') center/cover; border-radius: 48px; margin-bottom: 24px;"></div>
+          <h3 style="font-size: clamp(1.5rem, 3vw, 1.9rem);">Galactic Arch</h3>
+          <p style="color: var(--text-muted); flex-grow: 1;">Over 3,500 organic balloons, iridescent foil — a cosmic statement for galas.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: clamp(20px, 4vw, 35px);">
+          <div style="background: linear-gradient(145deg, #1e1a2f, #11101c); border-radius: 48px; padding: clamp(20px, 4vw, 24px); transition: 0.2s; flex: 1;">
+            <i class="fas fa-crown" style="font-size: 2rem; color: #ffaa66;"></i>
+            <h3 style="font-size: clamp(1.3rem, 3vw, 1.5rem); margin: 12px 0 8px;">Royal Cascade</h3>
+            <p style="color: var(--text-muted);">Luxury drapery + organic shapes, signature for weddings.</p>
+          </div>
+          <div style="background: rgba(255,255,240,0.03); border-radius: 48px; padding: clamp(20px, 4vw, 24px); backdrop-filter: blur(10px); flex: 1;">
+            <i class="fas fa-cloud-moon" style="font-size: 2rem; color: #c79aff;"></i>
+            <h3 style="font-size: clamp(1.3rem, 3vw, 1.5rem); margin: 12px 0 8px;">Whimsical Sky</h3>
+            <p style="color: var(--text-muted);">Floating cloud clusters & pastel gradients — dreamlike photography.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. EXPERIENCE / STORY -->
+  <section class="section-spacing">
+    <div class="container-custom">
+      <div class="grid-2-col">
+        <div style="position: relative; width: 100%; display: flex; justify-content: center;">
+          <div style="background: linear-gradient(125deg, #ff7eb3, #9b59b6); width: clamp(250px, 85%, 450px); border-radius: 200px 60px 200px 60px; padding: 12px; position: relative; z-index: 2;">
+            <div style="background: #0f0d1c; border-radius: 190px 50px 190px 50px; overflow: hidden; height: clamp(300px, 45vh, 420px); background-image: url('./images/index\ 3\ sections.jpg'); background-size: cover; background-position: center;"></div>
+          </div>
+          <div style="position: absolute; bottom: -20px; left: 10%; width: 150px; height: 150px; background: rgba(255, 160, 200, 0.3); filter: blur(45px); border-radius: 50%; z-index: 1;"></div>
+        </div>
+        <div style="text-align: left;">
+          <div style="margin-bottom: 24px;"><span style="background: rgba(255, 120, 160, 0.2); padding: 6px 18px; border-radius: 80px;">✦ Our Ethos</span></div>
+          <h2 style="font-size: clamp(2rem, 5vw, 2.8rem); font-family: 'Playfair Display'; line-height: 1.2;">Sculpting joy, <br>one helium dream at a time</h2>
+          <p style="margin: 28px 0; color: #d6d2f0; font-size: clamp(1rem, 2vw, 1.1rem); line-height: 1.5;">More than decor — we craft spatial poetry. Every arch, installation, and organic cluster is engineered with architectural precision and childlike wonder. Led by award-winning balloon artists, we transform venues into immersive storytelling landscapes.</p>
+          <div style="display: flex; align-items: flex-start; gap: 15px;">
+            <i class="fas fa-quote-left" style="font-size: clamp(1.8rem, 4vw, 2.4rem); opacity: 0.5;"></i>
+            <p style="font-style: italic; margin-top: 8px;">“Art that levitates — from concept to breathtaking reality.”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. EVENT CATEGORIES -->
+  <section class="section-spacing" style="background: #08070f; overflow: hidden;">
+    <div class="container-custom">
+      <div style="text-align: center; margin-bottom: 72px;">
+        <h2 style="font-size: 3rem;">Tailored for <span style="color:#ff9bc0;">every celebration</span></h2>
+        <p style="color: #bfb9e2;">Sculptural arches, avant-garde installations, and thematic packages</p>
+      </div>
+      <div class="grid-stack" style="align-items: stretch; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div style="background: rgba(18,15,32,0.7); border-radius: 64px; padding: clamp(24px, 5vw, 40px); transition: 0.3s; border-left: 4px solid #ff7eb3;">
+          <i class="fas fa-birthday-cake" style="font-size: clamp(2.5rem, 5vw, 3rem); color: #ffb77c;"></i>
+          <h3 style="font-size: clamp(1.5rem, 4vw, 1.8rem); margin: 20px 0 12px;">Birthday realms</h3>
+          <p style="color: var(--text-muted);">From first birthdays to 18th, enchanted setups with custom backdrops & balloon garlands.</p>
+        </div>
+        <div style="background: rgba(18,15,32,0.7); border-radius: 64px; padding: clamp(24px, 5vw, 40px); border-left: 4px solid #be7cff;">
+          <i class="fas fa-building" style="font-size: clamp(2.5rem, 5vw, 3rem); color: #be7cff;"></i>
+          <h3 style="font-size: clamp(1.5rem, 4vw, 1.8rem); margin: 20px 0 12px;">Corporate Elegance</h3>
+          <p style="color: var(--text-muted);">High-impact lobbies, product launches, gala arches — brand-forward statement pieces.</p>
+        </div>
+        <div style="background: rgba(18,15,32,0.7); border-radius: 64px; padding: clamp(24px, 5vw, 40px); border-left: 4px solid #71efb3;">
+          <i class="fas fa-archway" style="font-size: clamp(2.5rem, 5vw, 3rem); color: #71efb3;"></i>
+          <h3 style="font-size: clamp(1.5rem, 4vw, 1.8rem); margin: 20px 0 12px;">Custom Arches</h3>
+          <p style="color: var(--text-muted);">Organic, geometric, oversized — every arch is a unique functional sculpture.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 48px;"><a href="./Portfolio.html" class="btn-premium" style="margin-top: 40px;">Explore collections <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <!-- 5. INTERACTIVE GALLERY PREVIEW -->
+  <section class="section-spacing">
+    <div class="container-custom">
+      <div style="margin-bottom: 50px;">
+        <span style="font-size: 0.85rem; letter-spacing: 3px;">visual anthology</span>
+        <h2 style="font-size: 2.8rem;">Swipe through <span style="background: linear-gradient(145deg, #ffffff, #ffb7c5); -webkit-background-clip: text; background-clip: text; color: transparent;">our artistry</span></h2>
+      </div>
+      <div class="gallery-grid">
+        <div style="grid-row: span 2; background: url('./images/index\ 1\ section\ 1.jpg') center/cover; border-radius: 32px; transition: all 0.2s; transform: scale(1); filter: brightness(0.95);"></div>
+        <div style="background: url('./images/index\ 1\ section\ 2.jpg') center/cover; border-radius: 32px;"></div>
+        <div style="grid-row: span 2; background: url('./images/index\ 1\ section\ 3.jpg') center/cover; border-radius: 32px;"></div>
+        <div style="background: url('./images/index\ 1\ section\ 4.jpg') center/cover; border-radius: 32px;"></div>
+        <div style="background: url('./images/index\ 1\ section\ 5.jpg') center/cover; border-radius: 32px;"></div>
+        <div style="background: url('./images/index\ 1\ sections\ 6.jpg') center/cover; border-radius: 32px;"></div>
+      </div>
+      <div style="text-align: center; margin-top: 48px;"><a href="./Portfolio.html" class="btn-premium" style="margin-top: 40px;"><i class="fas fa-images"></i> Full portfolio</a></div>
+    </div>
+  </section>
+  <!-- 6. PRICING INSIGHT SECTION -->
+  <section class="section-spacing" style="background: linear-gradient(145deg, #0f0d1c, #070511); border-radius: 80px 80px 0 0; margin-top: 30px;">
+    <div class="container-custom">
+      <div style="max-width: clamp(300px, 90%, 900px); margin: 0 auto; text-align: center;">
+        <i class="fas fa-gem" style="font-size: clamp(2.2rem, 5vw, 2.8rem); color: #ffbb88;"></i>
+        <h2 style="font-size: clamp(2rem, 5vw, 2.8rem); margin: 32px 0 24px;">Pricing built around your vision</h2>
+        <p style="font-size: clamp(1rem, 2.5vw, 1.2rem); color: #cfcaf0; line-height: 1.6; margin-bottom: 48px;">No rigid templates. Each project is quoted based on complexity, volume, and artistic intricacy. From intimate arches to immersive large-scale installations — we deliver premium value without surprise fees. <br><br><strong style="color: white; font-size: 1.2rem;">Average investment: $800 – $6,500</strong> depending on scale and customization.</p>
+        <div style="display: flex; justify-content: center; gap: clamp(20px, 4vw, 32px); margin-top: 20px; flex-wrap: wrap; opacity: 0.8;">
+          <div style="font-size: 0.95rem;"><i class="fas fa-check-circle" style="color: #ffa3c2; margin-right: 8px;"></i> Transparent breakdown</div>
+          <div style="font-size: 0.95rem;"><i class="fas fa-check-circle" style="color: #ffa3c2; margin-right: 8px;"></i> Material + design + install</div>
+          <div style="font-size: 0.95rem;"><i class="fas fa-check-circle" style="color: #ffa3c2; margin-right: 8px;"></i> Free initial consultation</div>
+        </div>
+        <a href="./Contact Us.html" class="btn-premium" style="margin-top: 56px; padding: 1.2rem 2.8rem;">Get custom estimate <i class="fas fa-calculator"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BOOKING PROCESS -->
+  <section class="section-spacing">
+    <div class="container-custom">
+      <div style="text-align: center; margin-bottom: 60px;">
+        <h2 style="font-size: 3rem;">Your journey <span style="font-weight: 300;">to extraordinary</span></h2>
+        <p>Tailored in four seamless stages</p>
+      </div>
+      <div class="grid-stack">
+        <div style="background: rgba(255,255,245,0.02); backdrop-filter: blur(12px); border-radius: 42px; padding: clamp(24px, 5vw, 32px); text-align: center; border-bottom: 3px solid #ff7eb3;">
+          <span style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800;">01</span>
+          <h3 style="margin: 15px 0 8px;">Dream & Consult</h3>
+          <p style="color: var(--text-muted);">Virtual or in-person: share your mood, venue, and colour story.</p>
+        </div>
+        <div style="background: rgba(255,255,245,0.02); backdrop-filter: blur(12px); border-radius: 42px; padding: clamp(24px, 5vw, 32px); text-align: center; border-bottom: 3px solid #b37bff;">
+          <span style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800;">02</span>
+          <h3 style="margin: 15px 0 8px;">Design & Render</h3>
+          <p style="color: var(--text-muted);">Our artist crafts a 3D mockup & material proposal.</p>
+        </div>
+        <div style="background: rgba(255,255,245,0.02); backdrop-filter: blur(12px); border-radius: 42px; padding: clamp(24px, 5vw, 32px); text-align: center; border-bottom: 3px solid #ffdc7e;">
+          <span style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800;">03</span>
+          <h3 style="margin: 15px 0 8px;">Booking & Prep</h3>
+          <p style="color: var(--text-muted);">Secure date, balloon arrival + team prep logistics.</p>
+        </div>
+        <div style="background: rgba(255,255,245,0.02); backdrop-filter: blur(12px); border-radius: 42px; padding: clamp(24px, 5vw, 32px); text-align: center; border-bottom: 3px solid #6bd6af;">
+          <span style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800;">04</span>
+          <h3 style="margin: 15px 0 8px;">Installation & Magic</h3>
+          <p style="color: var(--text-muted);">Bringing the vision to life, on-site styling & finishing touches.</p>
+        </div>
+      </div>
+      <div style="margin-top: 56px; text-align: center;">
+        <a href="./Contact Us.html" class="btn-premium">Start your design consultation →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FINAL CALL-TO-ACTION SECTION -->
+  <section class="final-cta" style="margin: clamp(40px, 8vw, 60px) 0; background: radial-gradient(circle at 100% 0%, #251b3a, #0a0814); overflow: hidden; position: relative; width: 100%;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none;">
+      <div class="floating-orb" style="width: 400px; height: 400px; right: -50px; top: -80px; background: #ffb6d9; filter: blur(95px); opacity: 0.5;"></div>
+      <div class="floating-orb" style="width: 280px; height: 280px; bottom: -100px; left: -40px; background: #b794ff; filter: blur(70px);"></div>
+    </div>
+    <div class="container-custom" style="padding: clamp(60px, 12vw, 100px) clamp(20px, 5vw, 40px); text-align: center; position: relative; z-index: 3;">
+      <h2 class="display-head" style="font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 2.5rem;">Ready to elevate your event into a <span style="color: #ffd966;">masterpiece?</span></h2>
+      <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); max-width: 700px; margin: 0 auto 3.5rem; color: #e2daff; line-height: 1.6;">Let’s co-create a balloon installation that leaves your guests breathless. Our artisans are ready to transform your vision into reality.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="./Contact Us.html" class="btn-premium" style="background: white; color: #0c0b14; box-shadow: 0 8px 25px rgba(0,0,0,0.2); padding: 1.2rem 2.8rem;"><i class="fas fa-calendar-alt"></i> Book creative session</a>
+        <a href="./Contact Us.html" class="btn-premium" style="background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4); box-shadow: none; padding: 1.2rem 2.8rem;"><i class="fas fa-comment-dots"></i> Request brochure</a>
+      </div>
+      <div style="margin-top: 4rem; font-size: 0.95rem; color: rgba(226, 218, 255, 0.7);"><i class="fas fa-heart" style="color: #ff6b8b; margin-right: 8px;"></i> <span style="font-weight: 300; letter-spacing: 0.5px;">Limited availability per week — secure your date today</span></div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <a href="./index.html" class="brand-wrapper" style="text-decoration: none; margin-bottom: 1.5rem; display: flex;">
+          <span class="logo-text">🎈 Arch & Balloon</span>
+        </a>
+        <p>Creating breathtaking balloon installations and decorative arches for weddings, birthdays, and corporate events since 2015.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./Portfolio.html">Portfolio</a></li>
+          <li><a href="./Birthday Packages.html">Birthday Packages</a></li>
+          <li><a href="./Corporate Events.html">Corporate Events</a></li>
+          <li><a href="./Pricing.html">Pricing Guide</a></li>
+          <li><a href="./Design Consultation.html">Design Consultation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Contact Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe for exclusive offers and balloon decor inspiration.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Your email address">
+          <button>Subscribe</button>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.7rem;">✨ Get 10% off your first booking</p>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script>
+
+    (function(){
+      const body = document.body;
+      const desktopDark = document.getElementById('desktopDarkToggle');
+      const desktopRtl = document.getElementById('desktopRtlToggle');
+      const desktopLogin = document.getElementById('desktopLoginBtn');
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenuPanel');
+      const overlayBg = document.getElementById('overlayBg');
+      const closeMobile = document.getElementById('closeMobileMenuBtn');
+      const mobileDark = document.getElementById('mobileDarkToggleBtn');
+      const mobileRtl = document.getElementById('mobileRtlToggleBtn');
+      const mobileLogin = document.getElementById('mobileLoginBtn');
+
+      function setDarkMode(isDark) {
+        if(isDark) {
+          body.classList.add('dark');
+          localStorage.setItem('balloonTheme', 'dark');
+        } else {
+          body.classList.remove('dark');
+          localStorage.setItem('balloonTheme', 'light');
+        }
+        updateDarkIcons(isDark);
+      }
+      function updateDarkIcons(darkActive) {
+        const deskIcon = desktopDark?.querySelector('i');
+        const mobIcon = mobileDark?.querySelector('i');
+        if(deskIcon) {
+          deskIcon.className = darkActive ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        if(mobIcon) {
+          mobIcon.className = darkActive ? 'fas fa-sun' : 'fas fa-moon';
+        }
+      }
+      const savedTheme = localStorage.getItem('balloonTheme');
+      if(savedTheme === 'dark') setDarkMode(true);
+      else if(savedTheme === 'light') setDarkMode(false);
+      else setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      if(desktopDark) desktopDark.addEventListener('click', () => setDarkMode(!body.classList.contains('dark')));
+      if(mobileDark) mobileDark.addEventListener('click', () => setDarkMode(!body.classList.contains('dark')));
+
+      function setDirection(dir) {
+        document.documentElement.setAttribute('dir', dir);
+        body.setAttribute('dir', dir);
+        localStorage.setItem('balloonDir', dir);
+        const deskIconRtl = desktopRtl?.querySelector('i');
+        const mobIconRtl = mobileRtl?.querySelector('i');
+        if(deskIconRtl) deskIconRtl.style.transform = dir === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)';
+        if(mobIconRtl) mobIconRtl.style.transform = dir === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)';
+      }
+      const savedDir = localStorage.getItem('balloonDir');
+      setDirection(savedDir === 'rtl' ? 'rtl' : 'ltr');
+      function toggleDir() { setDirection(document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl'); }
+      if(desktopRtl) desktopRtl.addEventListener('click', toggleDir);
+      if(mobileRtl) mobileRtl.addEventListener('click', toggleDir);
+
+      if(mobileLogin) mobileLogin.addEventListener('click', () => { closePanel(); });
+
+      function openPanel() { mobileMenu.classList.add('open'); overlayBg.classList.add('active'); document.body.style.overflow = 'hidden'; }
+      function closePanel() { mobileMenu.classList.remove('open'); overlayBg.classList.remove('active'); document.body.style.overflow = ''; }
+      if(hamburger) hamburger.addEventListener('click', openPanel);
+      if(closeMobile) closeMobile.addEventListener('click', closePanel);
+      if(overlayBg) overlayBg.addEventListener('click', closePanel);
+
+      document.querySelectorAll('.studio-card .card-btn').forEach(btn => {
+        btn.addEventListener('click', () => alert("✨ Discover bespoke balloon artistry and arch designs."));
+      });
+      
+      const subscribeBtn = document.querySelector('.newsletter-input button');
+      if(subscribeBtn) {
+        subscribeBtn.addEventListener('click', () => {
+          alert("🎈 Thank you for subscribing! You'll receive exclusive offers and balloon decor inspiration.");
+        });
+      }
+
+      // Smooth orb animation
+      const floatingElements = document.querySelectorAll('.floating-orb');
+      function animateOrbs() {
+        floatingElements.forEach((orb, idx) => {
+          let moveX = (Math.sin(Date.now() * 0.001 * (idx+1)) * 12);
+          let moveY = (Math.cos(Date.now() * 0.0012 * (idx+1)) * 10);
+          orb.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+        requestAnimationFrame(animateOrbs);
+      }
+      if(floatingElements.length) requestAnimationFrame(animateOrbs);
+
+      window.addEventListener('resize', () => { if(window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) closePanel(); });
+    })();
+  </script>
+</body>
+</html>
