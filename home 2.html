@@ -862,6 +862,7 @@
       margin-top: 4rem;
       font-family: 'Sora', sans-serif;
       width: 100%;
+      text-align: center;
     }
     .footer-container {
       max-width: 1280px;
@@ -870,6 +871,23 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2.5rem;
       margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+      .footer {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+      .footer-container {
+        gap: 1.8rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .footer {
+        padding: 1.8rem 1rem 1rem;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
     }
     .footer-col h4 {
       font-family: 'Playfair Display', serif;
@@ -907,6 +925,7 @@
       gap: 1rem;
       margin-top: 1rem;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .social-links a {
       display: flex;
@@ -937,6 +956,7 @@
       display: flex;
       margin-top: 0.8rem;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .newsletter-input input {
       flex: 1;
@@ -1733,7 +1753,7 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-col">
-        <a href="./index.html" class="brand-wrapper" style="text-decoration: none; margin-bottom: 1.5rem; display: flex;">
+        <a href="./index.html" class="brand-wrapper" style="text-decoration: none; margin-bottom: 1.5rem; display: flex; justify-content: center;">
           <span class="logo-text">🎈 Arch & Balloon</span>
         </a>
         <p>Creating breathtaking balloon installations and decorative arches for weddings, birthdays, and corporate events since 2015.</p>
@@ -1775,6 +1795,8 @@
       </div>
     </div>
   </footer>
+
+
 
   <script>
     (function(){

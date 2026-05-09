@@ -871,6 +871,23 @@
       gap: 2.5rem;
       margin-bottom: 2rem;
     }
+    @media (max-width: 768px) {
+      .footer {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+      .footer-container {
+        gap: 1.8rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .footer {
+        padding: 1.8rem 1rem 1rem;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
     .footer-col h4 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
@@ -907,6 +924,11 @@
       gap: 1rem;
       margin-top: 1rem;
       flex-wrap: wrap;
+    }
+    @media (max-width: 1024px) {
+      .social-links {
+        justify-content: center;
+      }
     }
     .social-links a {
       display: flex;
@@ -1532,7 +1554,7 @@
       <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">
         Every breathtaking installation begins with a conversation. Let's sit down, review your inspiration, and engineer a bespoke structural masterpiece tailored perfectly to your event space.
       </p>
-      <a href="#booking-form" class="btn-premium">Start Your Consultation <i class="fas fa-arrow-down"></i></a>
+      <a href="#booking-form" class="btn-premium">Start Consultation</i></a>
     </div>
   </section>
 
@@ -1733,10 +1755,10 @@
         </a>
         <p>Creating breathtaking balloon installations and decorative arches for weddings, birthdays, and corporate events since 2015.</p>
         <div class="social-links">
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-pinterest"></i></a>
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
       <div class="footer-col">
@@ -1756,7 +1778,7 @@
           <li><a href="#">Terms & Conditions</a></li>
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Shipping & Returns</a></li>
-          <li><a href="#">Contact Support</a></li>
+          <li><a href="./Contact Us.html">Contact Support</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1768,6 +1790,9 @@
         </div>
         <p style="margin-top: 1rem; font-size: 0.7rem;">✨ Get 10% off your first booking</p>
       </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Arch & Balloon Studio. All rights reserved. Crafted with <i class="fas fa-heart" style="color: #ff6b8b;"></i> for extraordinary events.</p>
     </div>
   </footer>
 
