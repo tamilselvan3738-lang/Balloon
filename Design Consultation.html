@@ -20,7 +20,31 @@
     }
 
     /* ----- LUXURY LIGHT MODE (Dribbble-quality) ----- */
+    /* ----- LUXURY LIGHT & DARK MODES ----- */
     :root {
+      --global-padding-x: clamp(1.2rem, 6vw, 5rem);
+      --bg-primary: #f6f5fa;
+      --bg-secondary: #eee9f4;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --text-primary: #12101a;
+      --text-secondary: #474354;
+      --text-muted: #7c778c;
+      --border-lux: rgba(18, 16, 26, 0.08);
+      --accent-gold: #ff6097;
+      --accent-terracotta: #ff4880;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 10px 30px rgba(18, 16, 26, 0.05);
+      --btn-outline: #ff4880;
+      --icon-hover-bg: rgba(255, 72, 128, 0.08);
+      --card-glow: 0 20px 40px rgba(18, 16, 26, 0.05);
+      --scroll-track: #eee9f4;
+      --scroll-thumb: #ff4880;
+      --dropdown-bg: rgba(255, 255, 255, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.02);
+      --logo-gradient: linear-gradient(135deg, #12101a, #ff4880);
+    }
+
+    body.dark {
       --bg-primary: #0c0b14;
       --bg-secondary: #05040a;
       --surface-glass: rgba(20, 18, 30, 0.6);
@@ -38,28 +62,8 @@
       --scroll-track: #05040a;
       --scroll-thumb: #ff7eb3;
       --dropdown-bg: rgba(20, 18, 30, 0.98);
-    }
-
-    body.dark {
-      --bg-primary: #000000;
-      --bg-secondary: #000000;
-      --surface-glass: rgba(0, 0, 0, 0.8);
-      --text-primary: #f0eef7;
-      --text-secondary: #ccc9e6;
-      --text-muted: #8f8ba8;
-      --border-lux: rgba(255, 255, 255, 0.12);
-      --accent-gold: #ff7eb3;
-      --accent-terracotta: #ff758c;
-      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
-      --navbar-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.6);
-      --btn-outline: #ff7eb3;
-      --icon-hover-bg: rgba(255, 126, 179, 0.1);
-      --card-glow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
-      --scroll-track: #000000;
-      --scroll-thumb: #ff7eb3;
-      --dropdown-bg: rgba(0, 0, 0, 0.98);
-      background-color: #000000 !important;
-      background-image: none !important;
+      --section-bg-shade: rgba(0, 0, 0, 0.3);
+      --logo-gradient: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
     }
 
     body.dark section:not([style*="background"]) {
@@ -67,16 +71,13 @@
       background-image: none !important;
     }
 
-    body.dark .navbar,
-    body.dark .footer {
-      background: rgba(0, 0, 0, 0.8) !important;
-    }
+    
 
     body {
       font-family: 'Sora', sans-serif;
-      background-color: #0c0b14;
-      background-image: radial-gradient(circle at 0% 30%, #110e1c, #05040a);
-      color: #f0eef7;
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(circle at 0% 30%, var(--bg-secondary), var(--bg-primary));
+      color: var(--text-primary);
       font-weight: 400;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -106,7 +107,7 @@
       font-weight: 800;
       font-size: 1.6rem;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
+      background: var(--logo-gradient);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -124,17 +125,17 @@
     }
 
     .navbar {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
+      box-shadow: var(--navbar-shadow);
       padding: clamp(0.6rem, 2vw, 0.8rem) 0;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 1000;
       width: 100%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid var(--border-lux);
     }
 
     .nav-container {
@@ -186,7 +187,7 @@
       white-space: nowrap;
     }
     .nav-links-center a:hover {
-      color: #ff7eb3;
+      color: var(--accent-gold);
     }
     .nav-links-center a::after {
       content: '';
@@ -203,7 +204,7 @@
       width: 100%;
     }
     .nav-links-center a.active {
-      color: #ff7eb3;
+      color: var(--accent-gold);
     }
     .nav-links-center a.active::after {
       width: 100%;
@@ -314,12 +315,12 @@
     /* hamburger (hidden on wide) - REDUCED SIZE */
     .hamburger {
       display: none;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       font-size: 1.2rem;
       cursor: pointer;
-      color: #ffffff;
+      color: var(--text-primary);
       width: 36px;
       height: 36px;
       align-items: center;
@@ -330,7 +331,7 @@
     body.dark .hamburger {
       color: #ffffff;
       background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.12);
     }
     .hamburger:hover {
       background: var(--icon-hover-bg);
@@ -789,7 +790,7 @@
       width: 100%;
     }
     .studio-card {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
       border-radius: 48px;
       padding: 2.5rem 1.8rem;
@@ -859,9 +860,9 @@
 
     /* ========= PREMIUM FOOTER SECTION ========= */
     .footer {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid var(--border-lux);
       padding: 4rem 2rem 2rem;
       margin-top: 4rem;
       font-family: 'Sora', sans-serif;
@@ -899,6 +900,15 @@
       margin-bottom: 1.5rem;
       color: #ff7eb3;
       letter-spacing: -0.2px;
+    }
+    body:not(.dark) .footer-col h4 {
+      color: var(--accent-terracotta);
+    }
+    body:not(.dark) .footer-col p,
+    body:not(.dark) .footer-col ul,
+    body:not(.dark) .footer-col ul li a,
+    body:not(.dark) .footer-bottom {
+      color: var(--text-secondary);
     }
     .footer-col p, .footer-col ul {
       font-size: 0.85rem;
@@ -1067,9 +1077,9 @@
 
     .btn-outline-light {
       background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border: 1.5px solid var(--btn-outline);
       backdrop-filter: blur(4px);
-      color: white;
+      color: var(--btn-outline);
       box-shadow: none;
       padding: 12px 32px;
       border-radius: 60px;
@@ -1081,8 +1091,9 @@
     }
 
     .btn-outline-light:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #ff7eb3;
+      background: var(--icon-hover-bg);
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
       transform: translateY(-4px);
     }
 
@@ -1104,7 +1115,7 @@
 
     /* glassmorphism */
     .glass-card {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
       border-radius: 48px;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1229,8 +1240,27 @@
     }
 
     /* Standardized Global Padding Token */
+    /* ----- LUXURY LIGHT & DARK MODES ----- */
     :root {
-      --global-padding-x: clamp(1rem, 5vw, 4rem);
+      --bg-primary: #f6f5fa;
+      --bg-secondary: #eee9f4;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --text-primary: #12101a;
+      --text-secondary: #474354;
+      --text-muted: #7c778c;
+      --border-lux: rgba(18, 16, 26, 0.08);
+      --accent-gold: #ff6097;
+      --accent-terracotta: #ff4880;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 10px 30px rgba(18, 16, 26, 0.05);
+      --btn-outline: #ff4880;
+      --icon-hover-bg: rgba(255, 72, 128, 0.08);
+      --card-glow: 0 20px 40px rgba(18, 16, 26, 0.05);
+      --scroll-track: #eee9f4;
+      --scroll-thumb: #ff4880;
+      --dropdown-bg: rgba(255, 255, 255, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.02);
+      --logo-gradient: linear-gradient(135deg, #12101a, #ff4880);
     }
 
     /* 3. Base interior containers get exactly ONE layer of perfect padding */
@@ -1404,7 +1434,7 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(3rem, 7vw, 5.5rem);
   line-height: 1.1;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1516,7 +1546,8 @@
   display: flex;
   align-items: center;
   gap: 4rem;
-  background: linear-gradient(145deg, rgba(20,18,30,0.8), rgba(10,9,15,0.9));
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
   border-radius: 40px;
   padding: 4rem;
   border: 1px solid var(--border-lux);
@@ -1555,7 +1586,7 @@
     <div class="container-custom" style="max-width: 900px; z-index: 2; position: relative;">
       <span class="glow-text" style="letter-spacing: 4px; font-size: 0.9rem; text-transform: uppercase; color: var(--accent-gold); font-weight: 600;">Let's Create Together</span>
       <h1 class="consult-title">Your Vision,<br>Our Canvas</h1>
-      <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">
+      <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem; max-width: 650px; margin-left: auto; margin-right: auto;">
         Every breathtaking installation begins with a conversation. Let's sit down, review your inspiration, and engineer a bespoke structural masterpiece tailored perfectly to your event space.
       </p>
       <a href="#booking-form" class="btn-premium">Start Consultation</i></a>
@@ -1599,7 +1630,7 @@
   </section>
 
   <!-- SECTION 3: The Studio Experience (Split layout) -->
-  <section style="padding: 6rem 0; background: rgba(0,0,0,0.3); border-top: 1px solid var(--border-lux);">
+  <section style="padding: 6rem 0; background: var(--section-bg-shade); border-top: 1px solid var(--border-lux);">
     <div class="container-custom" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
       <div style="position: relative; height: 500px; border-radius: 40px; overflow: hidden;">
         <img src="./images/The Studio Experience.jpg" alt="Studio Consultation" style="width: 100%; height: 100%; object-fit: cover;">
@@ -1608,7 +1639,7 @@
       <div>
         <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--text-primary);">The Studio Experience</h2>
         <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
-          Prefer an in-person meeting? Visit our atelier. Touch and feel our premium 100% biodegradable latex. See our custom double-stuffed colors in natural light, and explore our rental inventory of neon signs, shimmer walls, and luxury backdrops up close.
+          Prefer an in-person meeting? Visit our design studio. Touch and feel our premium 100% biodegradable latex. See our custom double-stuffed colors in natural light, and explore our rental inventory of neon signs, shimmer walls, and luxury backdrops up close.
         </p>
         <ul style="list-style: none; padding: 0;">
           <li style="margin-bottom: 1rem; color: var(--text-primary);"><i class="fas fa-glass-cheers" style="color: var(--accent-gold); margin-right: 15px;"></i> Complimentary Champagne / Espresso</li>
@@ -1676,13 +1707,13 @@
   </section>
 
   <!-- SECTION 7: Interactive Consultation Form -->
-  <section id="booking-form" style="padding: 6rem 0; background: rgba(0,0,0,0.4); border-top: 1px solid var(--border-lux);">
+  <section id="booking-form" style="padding: 6rem 0; background: var(--section-bg-shade); border-top: 1px solid var(--border-lux);">
     <div class="container-custom" style="max-width: 800px;">
       <div style="text-align: center; margin-bottom: 3rem;">
         <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--text-primary);">Request a Consultation</h2>
         <p style="color: var(--text-secondary);">Fill out the details below and we will be in touch within 24 hours.</p>
       </div>
-      <form class="consult-form" style="background: var(--surface-glass); padding: 3rem; border-radius: 40px; border: 1px solid var(--border-lux); backdrop-filter: blur(16px);">
+      <form class="consult-form" style="background: var(--surface-glass); padding: 3rem; border-radius: 40px; border: 1px solid var(--border-lux); backdrop-filter: blur(16px); max-width: 650px; margin: 0 auto;">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
           <div>
             <label>First Name</label>
@@ -1738,7 +1769,7 @@
   </section>
 
   <!-- SECTION 8: Final FAQ / Support CTA -->
-  <section class="final-cta" style="margin: 80px 32px 80px 32px; border-radius: 60px; background: rgba(20, 18, 30, 0.6); border: 1px solid var(--border-lux); overflow: hidden; position: relative; backdrop-filter: blur(16px);">
+  <section class="final-cta" style="margin: 80px 32px 80px 32px; border-radius: 60px; background: var(--surface-glass); border: 1px solid var(--border-lux); overflow: hidden; position: relative; backdrop-filter: blur(16px);">
     <div class="floating-orb" style="width: 250px; height: 250px; right: -50px; top: -50px; background: #ffb6d9; filter: blur(80px); opacity: 0.15;"></div>
     <div class="container-custom" style="padding: 70px 40px; text-align: center; position: relative; z-index: 2;">
       <h2 class="display-head" style="font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 1rem;">Not quite ready to book?</h2>

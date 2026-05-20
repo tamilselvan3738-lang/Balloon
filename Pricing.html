@@ -20,7 +20,31 @@
     }
 
     /* ----- LUXURY LIGHT MODE (Dribbble-quality) ----- */
+    /* ----- LUXURY LIGHT & DARK MODES ----- */
     :root {
+      --global-padding-x: clamp(1.2rem, 6vw, 5rem);
+      --bg-primary: #f6f5fa;
+      --bg-secondary: #eee9f4;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --text-primary: #12101a;
+      --text-secondary: #474354;
+      --text-muted: #7c778c;
+      --border-lux: rgba(18, 16, 26, 0.08);
+      --accent-gold: #ff6097;
+      --accent-terracotta: #ff4880;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 10px 30px rgba(18, 16, 26, 0.05);
+      --btn-outline: #ff4880;
+      --icon-hover-bg: rgba(255, 72, 128, 0.08);
+      --card-glow: 0 20px 40px rgba(18, 16, 26, 0.05);
+      --scroll-track: #eee9f4;
+      --scroll-thumb: #ff4880;
+      --dropdown-bg: rgba(255, 255, 255, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.02);
+      --logo-gradient: linear-gradient(135deg, #12101a, #ff4880);
+    }
+
+    body.dark {
       --bg-primary: #0c0b14;
       --bg-secondary: #05040a;
       --surface-glass: rgba(20, 18, 30, 0.6);
@@ -38,45 +62,19 @@
       --scroll-track: #05040a;
       --scroll-thumb: #ff7eb3;
       --dropdown-bg: rgba(20, 18, 30, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.3);
+      --logo-gradient: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
     }
 
-    body.dark {
-      --bg-primary: #000000;
-      --bg-secondary: #000000;
-      --surface-glass: rgba(0, 0, 0, 0.8);
-      --text-primary: #f0eef7;
-      --text-secondary: #ccc9e6;
-      --text-muted: #8f8ba8;
-      --border-lux: rgba(255, 255, 255, 0.12);
-      --accent-gold: #ff7eb3;
-      --accent-terracotta: #ff758c;
-      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
-      --navbar-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.6);
-      --btn-outline: #ff7eb3;
-      --icon-hover-bg: rgba(255, 126, 179, 0.1);
-      --card-glow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
-      --scroll-track: #000000;
-      --scroll-thumb: #ff7eb3;
-      --dropdown-bg: rgba(0, 0, 0, 0.98);
-      background-color: #000000 !important;
-      background-image: none !important;
-    }
+    
 
-    body.dark section {
-      background-color: #000000 !important;
-      background-image: none !important;
-    }
-
-    body.dark .navbar,
-    body.dark .footer {
-      background: rgba(0, 0, 0, 0.8) !important;
-    }
+    
 
     body {
       font-family: 'Sora', sans-serif;
-      background-color: #0c0b14;
-      background-image: radial-gradient(circle at 0% 30%, #110e1c, #05040a);
-      color: #f0eef7;
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(circle at 0% 30%, var(--bg-secondary), var(--bg-primary));
+      color: var(--text-primary);
       font-weight: 400;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -106,7 +104,7 @@
       font-weight: 800;
       font-size: 1.6rem;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
+      background: var(--logo-gradient);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -124,17 +122,17 @@
     }
 
     .navbar {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
+      box-shadow: var(--navbar-shadow);
       padding: clamp(0.6rem, 2vw, 0.8rem) 0;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 1000;
       width: 100%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid var(--border-lux);
     }
 
     .nav-container {
@@ -186,7 +184,7 @@
       white-space: nowrap;
     }
     .nav-links-center a:hover {
-      color: #ff7eb3;
+      color: var(--accent-gold);
     }
     .nav-links-center a::after {
       content: '';
@@ -203,7 +201,7 @@
       width: 100%;
     }
     .nav-links-center a.active {
-      color: #ff7eb3;
+      color: var(--accent-gold);
     }
     .nav-links-center a.active::after {
       width: 100%;
@@ -314,12 +312,12 @@
     /* hamburger (hidden on wide) - REDUCED SIZE */
     .hamburger {
       display: none;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       font-size: 1.2rem;
       cursor: pointer;
-      color: #ffffff;
+      color: var(--text-primary);
       width: 36px;
       height: 36px;
       align-items: center;
@@ -330,7 +328,7 @@
     body.dark .hamburger {
       color: #ffffff;
       background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.12);
     }
     .hamburger:hover {
       background: var(--icon-hover-bg);
@@ -794,7 +792,7 @@
       width: 100%;
     }
     .studio-card {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
       border-radius: 48px;
       padding: 2.5rem 1.8rem;
@@ -864,9 +862,9 @@
 
     /* ========= PREMIUM FOOTER SECTION ========= */
     .footer {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid var(--border-lux);
       padding: 4rem 2rem 2rem;
       margin-top: 4rem;
       font-family: 'Sora', sans-serif;
@@ -887,6 +885,15 @@
       margin-bottom: 1.5rem;
       color: #ff7eb3;
       letter-spacing: -0.2px;
+    }
+    body:not(.dark) .footer-col h4 {
+      color: var(--accent-terracotta);
+    }
+    body:not(.dark) .footer-col p,
+    body:not(.dark) .footer-col ul,
+    body:not(.dark) .footer-col ul li a,
+    body:not(.dark) .footer-bottom {
+      color: var(--text-secondary);
     }
     .footer-col p, .footer-col ul {
       font-size: 0.85rem;
@@ -1055,9 +1062,9 @@
 
     .btn-outline-light {
       background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border: 1.5px solid var(--btn-outline);
       backdrop-filter: blur(4px);
-      color: white;
+      color: var(--btn-outline);
       box-shadow: none;
       padding: 12px 32px;
       border-radius: 60px;
@@ -1069,8 +1076,9 @@
     }
 
     .btn-outline-light:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #ff7eb3;
+      background: var(--icon-hover-bg);
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
       transform: translateY(-4px);
     }
 
@@ -1091,7 +1099,7 @@
 
     /* glassmorphism */
     .glass-card {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
       border-radius: 48px;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1215,8 +1223,27 @@
       padding-right: 0;
     }
     /* Standardized Global Padding Token */
+    /* ----- LUXURY LIGHT & DARK MODES ----- */
     :root {
-      --global-padding-x: clamp(1rem, 5vw, 4rem);
+      --bg-primary: #f6f5fa;
+      --bg-secondary: #eee9f4;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --text-primary: #12101a;
+      --text-secondary: #474354;
+      --text-muted: #7c778c;
+      --border-lux: rgba(18, 16, 26, 0.08);
+      --accent-gold: #ff6097;
+      --accent-terracotta: #ff4880;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 10px 30px rgba(18, 16, 26, 0.05);
+      --btn-outline: #ff4880;
+      --icon-hover-bg: rgba(255, 72, 128, 0.08);
+      --card-glow: 0 20px 40px rgba(18, 16, 26, 0.05);
+      --scroll-track: #eee9f4;
+      --scroll-thumb: #ff4880;
+      --dropdown-bg: rgba(255, 255, 255, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.02);
+      --logo-gradient: linear-gradient(135deg, #12101a, #ff4880);
     }
 
     /* 3. Base interior containers get exactly ONE layer of perfect padding */
@@ -1301,7 +1328,19 @@
        .studio-card { padding: 2rem 1.5rem !important; border-radius: 32px !important; }
        .final-cta { margin: 2rem 1rem !important; padding: 3rem 1rem !important; }
     }
-  </style>
+  .pricing-menu-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 992px) {
+  .pricing-menu-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+</style>
 
 </head>
 <body dir="ltr">
@@ -1392,7 +1431,7 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.5rem, 8vw, 5.5rem);
   line-height: 1.1;
-  background: linear-gradient(135deg, #b77eff, #ff7eb3);
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1482,7 +1521,7 @@
   gap: 2rem;
 }
 .faq-card {
-  background: rgba(0,0,0,0.3);
+  background: var(--section-bg-shade);
   border: 1px solid var(--border-lux);
   padding: 2rem;
   border-radius: 24px;
@@ -1510,17 +1549,17 @@
     <div class="container-custom" style="max-width: 900px; z-index: 2; position: relative;">
       <span class="glow-text" style="letter-spacing: 4px; font-size: 0.9rem; text-transform: uppercase; color: var(--accent-terracotta); font-weight: 600;">Transparent Investment</span>
       <h1 class="pricing-title">The Art of<br>Celebration</h1>
-      <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">
+      <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem; max-width: 650px; margin-left: auto; margin-right: auto;">
         We don't just sell balloons; we sell structural art, atmosphere, and unforgettable experiences. Discover our transparent pricing guide tailored for every scale of celebration.
       </p>
       <div class="hero-btns-group" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a href="#packages" class="btn-premium">View Packages</a>
-        <a href="#alacarte" class="btn-outline-light">A La Carte Pricing</a>
+        <a href="#alacarte" class="btn-outline-light">Bespoke Décor Elements</a>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2: Pricing Philosophy -->
+  <!-- SECTION 2: Pricing Philosophy (Interactive Accordion) -->
   <section class="section-spacing container-custom">
     <div class="pricing-philosophy">
       <div style="position: relative; height: clamp(300px, 45vh, 500px); border-radius: 40px; overflow: hidden; border: 1px solid var(--border-lux);">
@@ -1530,75 +1569,139 @@
       <div>
         <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1.5rem; color: var(--text-primary);">How We Quote</h2>
         <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
-          Every installation is a custom architectural piece. Our quotes are based on three fundamental elements: Volume, Complexity, and Logistics. We pride ourselves on transparent, itemized pricing so you know exactly where your investment goes.
+          Every event installation is a custom design. We calculate your customized proposal based on three transparent pricing pillars:
         </p>
-        <ul style="list-style: none; padding: 0;">
-          <li style="margin-bottom: 1.2rem; display: flex; gap: 1rem;">
-            <i class="fas fa-ruler-combined" style="color: var(--accent-gold); font-size: 1.5rem; margin-top: 0.2rem;"></i>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-bottom: 0.3rem;">Volume (Length & Density)</strong>
-              <span style="color: var(--text-muted); font-size: 0.95rem;">Prices typically start at $25 per linear foot for standard organic garlands. Thicker, luxurious "double-stuffed" garlands increase the base rate.</span>
+        
+        <!-- Accordion Container -->
+        <div class="pricing-accordion" style="display: flex; flex-direction: column; gap: 1rem;">
+          
+          <!-- Accordion Item 1 -->
+          <div class="accordion-item" style="border: 1px solid var(--border-lux); border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.02); transition: all 0.3s;">
+            <button class="accordion-trigger" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; background: transparent; border: none; outline: none; cursor: pointer; text-align: left;">
+              <span style="color: var(--text-primary); font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-ruler-combined" style="color: var(--accent-gold); width: 24px;"></i>
+                01. Volume (Length & Density)
+              </span>
+              <i class="fas fa-chevron-down accordion-chevron" style="color: var(--text-muted); transition: transform 0.3s;"></i>
+            </button>
+            <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem;">
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; padding-bottom: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; margin-top: 0.5rem;">
+                Prices typically start at $25 per linear foot for standard organic garlands. Thicker, luxurious "double-stuffed" garlands (where one balloon is inserted inside another for a custom matte, high-opacity finish) increase the base rate due to additional materials and custom coloring.
+              </p>
             </div>
-          </li>
-          <li style="margin-bottom: 1.2rem; display: flex; gap: 1rem;">
-            <i class="fas fa-layer-group" style="color: var(--accent-gold); font-size: 1.5rem; margin-top: 0.2rem;"></i>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-bottom: 0.3rem;">Complexity & Add-Ons</strong>
-              <span style="color: var(--text-muted); font-size: 0.95rem;">Integration of florals, neon signage, custom vinyl decals, and foil clusters add to the overall design fee.</span>
+          </div>
+
+          <!-- Accordion Item 2 -->
+          <div class="accordion-item" style="border: 1px solid var(--border-lux); border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.02); transition: all 0.3s;">
+            <button class="accordion-trigger" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; background: transparent; border: none; outline: none; cursor: pointer; text-align: left;">
+              <span style="color: var(--text-primary); font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-layer-group" style="color: var(--accent-gold); width: 24px;"></i>
+                02. Design Complexity & Styling
+              </span>
+              <i class="fas fa-chevron-down accordion-chevron" style="color: var(--text-muted); transition: transform 0.3s;"></i>
+            </button>
+            <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem;">
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; padding-bottom: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; margin-top: 0.5rem;">
+                Incorporating complex structures, multi-layered backdrops, silk floral accents, hanging streamers, neon signage rentals, custom vinyl decals, and foil highlights requires high craftsmanship and styling labor, which is calculated based on the complexity of your custom build.
+              </p>
             </div>
-          </li>
-        </ul>
+          </div>
+
+          <!-- Accordion Item 3 -->
+          <div class="accordion-item" style="border: 1px solid var(--border-lux); border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.02); transition: all 0.3s;">
+            <button class="accordion-trigger" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; background: transparent; border: none; outline: none; cursor: pointer; text-align: left;">
+              <span style="color: var(--text-primary); font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-truck" style="color: var(--accent-gold); width: 24px;"></i>
+                03. Logistics, Delivery & Strike
+              </span>
+              <i class="fas fa-chevron-down accordion-chevron" style="color: var(--text-muted); transition: transform 0.3s;"></i>
+            </button>
+            <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.5rem;">
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; padding-bottom: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; margin-top: 0.5rem;">
+                Logistical planning includes the mileage to the venue ($2.50 per mile), installation time frame (rigging and structural setup is calculated at 20% of the total design cost), and optional end-of-event strike/teardown service (starting at $150).
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 3: A La Carte Base Guide -->
-  <section id="alacarte" style="padding: 6rem 0; background: rgba(0,0,0,0.3); border-top: 1px solid var(--border-lux);">
-    <div class="container-custom" style="max-width: 900px;">
+  <!-- SECTION 3: Bespoke Décor Elements & Pricing Menu -->
+  <section id="alacarte" style="padding: 6rem 0; background: var(--section-bg-shade); border-top: 1px solid var(--border-lux);">
+    <div class="container-custom">
       <div style="text-align: center; margin-bottom: 4rem;">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--text-primary);">Base Guide (A La Carte)</h2>
-        <p style="color: var(--text-secondary);">Build your own custom installation</p>
+        <span class="glow-text" style="letter-spacing: 3px; font-size: 0.95rem; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; display: block; margin-bottom: 0.8rem;">Bespoke Décor Menu</span>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--text-primary);">Custom Décor Guide</h2>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 1rem auto 0 auto; line-height: 1.6;">Mix and match individual design items to build your dream event installation.</p>
       </div>
-      <div class="alacarte-list">
-        <div class="alacarte-item">
-          <div>
-            <div class="alacarte-name">Classic Organic Garland</div>
-            <div class="alacarte-desc">Single-stuffed balloons, standard colors (minimum 6ft)</div>
+      
+      <div class="pricing-menu-layout" style="align-items: flex-start;">
+        <!-- Left Side: Simplified Pricing List -->
+        <div class="alacarte-list">
+          <div class="alacarte-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-lux); border-radius: 20px; transition: all 0.3s; margin-bottom: 1rem;">
+            <div>
+              <div class="alacarte-name" style="font-size: 1.2rem; color: var(--text-primary); font-weight: 600;">Classic Organic Garland</div>
+              <div class="alacarte-desc" style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.3rem;">Standard size, single-stuffed balloons (minimum 6ft booking)</div>
+            </div>
+            <div class="alacarte-price" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; white-space: nowrap;">$25 / ft</div>
           </div>
-          <div class="alacarte-price">$25 / ft</div>
+          
+          <div class="alacarte-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-lux); border-radius: 20px; transition: all 0.3s; margin-bottom: 1rem;">
+            <div>
+              <div class="alacarte-name" style="font-size: 1.2rem; color: var(--text-primary); font-weight: 600;">Luxe Double-Stuffed Garland</div>
+              <div class="alacarte-desc" style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.3rem;">Custom opaque pastel/matte tones, premium high-density placement</div>
+            </div>
+            <div class="alacarte-price" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; white-space: nowrap;">$35 / ft</div>
+          </div>
+          
+          <div class="alacarte-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-lux); border-radius: 20px; transition: all 0.3s; margin-bottom: 1rem;">
+            <div>
+              <div class="alacarte-name" style="font-size: 1.2rem; color: var(--text-primary); font-weight: 600;">Freestanding Balloon Column</div>
+              <div class="alacarte-desc" style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.3rem;">7ft tall sturdy vertical pillar, ideal for framing entryways or stages</div>
+            </div>
+            <div class="alacarte-price" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; white-space: nowrap;">$125 ea</div>
+          </div>
+          
+          <div class="alacarte-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-lux); border-radius: 20px; transition: all 0.3s; margin-bottom: 1rem;">
+            <div>
+              <div class="alacarte-name" style="font-size: 1.2rem; color: var(--text-primary); font-weight: 600;">Classic Spiral Arch</div>
+              <div class="alacarte-desc" style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.3rem;">Traditional symmetrical packed pattern, perfect for runs (approx. 20ft)</div>
+            </div>
+            <div class="alacarte-price" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; white-space: nowrap;">$300 flat</div>
+          </div>
+          
+          <div class="alacarte-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-lux); border-radius: 20px; transition: all 0.3s; margin-bottom: 1rem;">
+            <div>
+              <div class="alacarte-name" style="font-size: 1.2rem; color: var(--text-primary); font-weight: 600;">Foil Number / Accent Bouquet</div>
+              <div class="alacarte-desc" style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.3rem;">Giant 40" foil character weighted on a stylized mini balloon base</div>
+            </div>
+            <div class="alacarte-price" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; white-space: nowrap;">$65 ea</div>
+          </div>
         </div>
-        <div class="alacarte-item">
-          <div>
-            <div class="alacarte-name">Luxe Double-Stuffed Garland</div>
-            <div class="alacarte-desc">Custom opaque colors, premium density</div>
+        
+        <!-- Right Side: Supporting Image + Book CTA -->
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          <div style="position: relative; height: 350px; border-radius: 32px; overflow: hidden; border: 1px solid var(--border-lux);">
+            <img src="./images/luxe_balloon_garland.png" alt="Luxe Garland Setup Detail" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; bottom: 1.5rem; left: 1.5rem; background: rgba(0,0,0,0.7); padding: 0.5rem 1rem; border-radius: 12px; border: 1px solid var(--border-lux);">
+              <span style="color: #ffffff; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-camera" style="margin-right: 6px; color: var(--accent-gold);"></i> Visual Reference: Luxe Garland</span>
+            </div>
           </div>
-          <div class="alacarte-price">$35 / ft</div>
-        </div>
-        <div class="alacarte-item">
-          <div>
-            <div class="alacarte-name">Freestanding Balloon Column</div>
-            <div class="alacarte-desc">7ft tall, perfect for entrances or framing stages</div>
+          
+          <div class="glass-card" style="padding: 2.5rem; border-radius: 32px; text-align: center; background: var(--surface-glass);">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--text-primary); margin-bottom: 0.8rem;">Ready to Secure Your Date?</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.8rem;">
+              Dates fill up quickly! Let's lock in your event details and design the perfect bespoke installation for your space.
+            </p>
+            <a href="./Design Consultation.html" class="btn-premium" style="width: 100%; justify-content: center; font-size: 0.95rem;">Book Your Design Consultation <i class="fas fa-calendar-check"></i></a>
           </div>
-          <div class="alacarte-price">$125 ea</div>
-        </div>
-        <div class="alacarte-item">
-          <div>
-            <div class="alacarte-name">Classic Arch (Non-Organic)</div>
-            <div class="alacarte-desc">Symmetrical, packed spiral pattern (approx. 20ft)</div>
-          </div>
-          <div class="alacarte-price">From $300</div>
-        </div>
-        <div class="alacarte-item">
-          <div>
-            <div class="alacarte-name">Foil Number / Letter Bouquet</div>
-            <div class="alacarte-desc">Giant 40" foils anchored with a mini balloon base</div>
-          </div>
-          <div class="alacarte-price">$65 ea</div>
         </div>
       </div>
     </div>
   </section>
-
+  
   <!-- SECTION 4: Signature Packages -->
   <section id="packages" class="section-spacing container-custom">
     <div style="text-align: center; margin-bottom: 4rem;">
@@ -1650,7 +1753,7 @@
   </section>
 
   <!-- SECTION 5: Add-Ons -->
-  <section style="padding: 4rem 2rem; background: rgba(0,0,0,0.3); border-top: 1px solid var(--border-lux);">
+  <section style="padding: 4rem 2rem; background: var(--section-bg-shade); border-top: 1px solid var(--border-lux);">
     <div class="container-custom" style="text-align: center;">
       <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 3rem; color: var(--text-primary);">Rentals & Add-Ons</h2>
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
@@ -1688,7 +1791,7 @@
   </section>
 
   <!-- SECTION 7: FAQ -->
-  <section style="padding: 6rem 0; background: rgba(0,0,0,0.3); border-top: 1px solid var(--border-lux);">
+  <section style="padding: 6rem 0; background: var(--section-bg-shade); border-top: 1px solid var(--border-lux);">
     <div class="container-custom" style="max-width: 1000px;">
       <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--text-primary); text-align: center; margin-bottom: 4rem;">Pricing FAQ</h2>
       <div class="faq-grid">
@@ -1713,12 +1816,12 @@
   </section>
 
   <!-- SECTION 8: Final CTA -->
-  <section id="consult" class="final-cta" style="margin: 80px 32px 80px 32px; border-radius: 60px; background: rgba(20, 18, 30, 0.6); border: 1px solid var(--border-lux); overflow: hidden; position: relative; backdrop-filter: blur(16px);">
+  <section id="consult" class="final-cta" style="margin: 80px 32px 80px 32px; border-radius: 60px; background: var(--surface-glass); border: 1px solid var(--border-lux); overflow: hidden; position: relative; backdrop-filter: blur(16px);">
     <div class="floating-orb" style="width: 300px; height: 300px; right: -50px; bottom: -50px; background: #b77eff; filter: blur(90px); opacity: 0.15;"></div>
     <div class="container-custom" style="padding: 70px 40px; text-align: center; position: relative; z-index: 2;">
-      <h2 class="display-head" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem;">Ready for your Quote?</h2>
-      <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">Provide us with your venue details, inspiration photos, and date, and we'll craft a custom proposal.</p>
-      <a href="#" class="btn-premium">Request Custom Quote <i class="fas fa-paper-plane"></i></a>
+      <h2 class="display-head" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem;">Ready to Book?</h2>
+      <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">Secure your date on our calendar and schedule a custom design consultation with our lead artist.</p>
+      <a href="./Design Consultation.html" class="btn-premium">Book Your Design Consultation <i class="fas fa-calendar-check"></i></a>
     </div>
   </section>
 </div>
@@ -1859,6 +1962,36 @@
         requestAnimationFrame(animateOrbs);
       }
       if(floatingElements.length) requestAnimationFrame(animateOrbs);
+
+            // Pricing Accordion toggle logic
+      document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const item = trigger.closest('.accordion-item');
+          const content = item.querySelector('.accordion-content');
+          const chevron = trigger.querySelector('.accordion-chevron');
+          const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+          // Close all items
+          document.querySelectorAll('.accordion-content').forEach(c => {
+            c.style.maxHeight = '0px';
+            c.closest('.accordion-item').style.borderColor = 'var(--border-lux)';
+            c.closest('.accordion-item').style.background = 'rgba(255, 255, 255, 0.02)';
+          });
+          document.querySelectorAll('.accordion-chevron').forEach(ch => {
+            ch.style.transform = 'rotate(0deg)';
+          });
+
+          if (!isOpen) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            item.style.borderColor = 'var(--accent-terracotta)';
+            item.style.background = 'rgba(255, 255, 255, 0.05)';
+            chevron.style.transform = 'rotate(180deg)';
+          }
+        });
+      });
+      // Auto-open first accordion item
+      const firstTrigger = document.querySelector('.accordion-trigger');
+      if (firstTrigger) firstTrigger.click();
 
       window.addEventListener('resize', () => { if(window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) closePanel(); });
     })();

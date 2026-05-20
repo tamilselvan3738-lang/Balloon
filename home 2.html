@@ -20,7 +20,31 @@
     }
 
     /* ----- LUXURY LIGHT MODE (Dribbble-quality) ----- */
+    /* ----- LUXURY LIGHT & DARK MODES ----- */
     :root {
+      --global-padding-x: clamp(1.2rem, 6vw, 5rem);
+      --bg-primary: #f6f5fa;
+      --bg-secondary: #eee9f4;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --text-primary: #12101a;
+      --text-secondary: #474354;
+      --text-muted: #7c778c;
+      --border-lux: rgba(18, 16, 26, 0.08);
+      --accent-gold: #ff6097;
+      --accent-terracotta: #ff4880;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 10px 30px rgba(18, 16, 26, 0.05);
+      --btn-outline: #ff4880;
+      --icon-hover-bg: rgba(255, 72, 128, 0.08);
+      --card-glow: 0 20px 40px rgba(18, 16, 26, 0.05);
+      --scroll-track: #eee9f4;
+      --scroll-thumb: #ff4880;
+      --dropdown-bg: rgba(255, 255, 255, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.02);
+      --logo-gradient: linear-gradient(135deg, #12101a, #ff4880);
+    }
+
+    body.dark {
       --bg-primary: #0c0b14;
       --bg-secondary: #05040a;
       --surface-glass: rgba(20, 18, 30, 0.6);
@@ -38,45 +62,19 @@
       --scroll-track: #05040a;
       --scroll-thumb: #ff7eb3;
       --dropdown-bg: rgba(20, 18, 30, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.3);
+      --logo-gradient: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
     }
 
-    body.dark {
-      --bg-primary: #000000;
-      --bg-secondary: #000000;
-      --surface-glass: rgba(0, 0, 0, 0.8);
-      --text-primary: #f0eef7;
-      --text-secondary: #ccc9e6;
-      --text-muted: #8f8ba8;
-      --border-lux: rgba(255, 255, 255, 0.12);
-      --accent-gold: #ff7eb3;
-      --accent-terracotta: #ff758c;
-      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
-      --navbar-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.6);
-      --btn-outline: #ff7eb3;
-      --icon-hover-bg: rgba(255, 126, 179, 0.1);
-      --card-glow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
-      --scroll-track: #000000;
-      --scroll-thumb: #ff7eb3;
-      --dropdown-bg: rgba(0, 0, 0, 0.98);
-      background-color: #000000 !important;
-      background-image: none !important;
-    }
+    
 
-    body.dark section {
-      background-color: #000000 !important;
-      background-image: none !important;
-    }
-
-    body.dark .navbar,
-    body.dark .footer {
-      background: rgba(0, 0, 0, 0.8) !important;
-    }
+    
 
     body {
       font-family: 'Sora', sans-serif;
-      background-color: #0c0b14;
-      background-image: radial-gradient(circle at 0% 30%, #110e1c, #05040a);
-      color: #f0eef7;
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(circle at 0% 30%, var(--bg-secondary), var(--bg-primary));
+      color: var(--text-primary);
       font-weight: 400;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -106,7 +104,7 @@
       font-weight: 800;
       font-size: 1.6rem;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
+      background: var(--logo-gradient);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -124,7 +122,7 @@
     }
 
     .navbar {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
@@ -134,7 +132,7 @@
       left: 0;
       z-index: 1000;
       width: 100%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid var(--border-lux);
     }
 
     .nav-container {
@@ -816,7 +814,7 @@
       width: 100%;
     }
     .studio-card {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
       border-radius: 48px;
       padding: 2.5rem 1.8rem;
@@ -886,9 +884,9 @@
 
     /* ========= PREMIUM FOOTER SECTION ========= */
     .footer {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid var(--border-lux);
       padding: 4rem 2rem 2rem;
       margin-top: 4rem;
       font-family: 'Sora', sans-serif;
@@ -927,6 +925,15 @@
       margin-bottom: 1.5rem;
       color: #ff7eb3;
       letter-spacing: -0.2px;
+    }
+    body:not(.dark) .footer-col h4 {
+      color: var(--accent-terracotta);
+    }
+    body:not(.dark) .footer-col p,
+    body:not(.dark) .footer-col ul,
+    body:not(.dark) .footer-col ul li a,
+    body:not(.dark) .footer-bottom {
+      color: var(--text-secondary);
     }
     .footer-col p, .footer-col ul {
       font-size: 0.85rem;
@@ -1101,17 +1108,29 @@
 
     .btn-outline-light {
       background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border: 1.5px solid var(--border-lux);
       backdrop-filter: blur(4px);
-      color: white;
+      color: var(--text-primary);
       box-shadow: none;
       padding: 12px 32px;
     }
 
+    body.dark .btn-outline-light {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: white;
+    }
+
     .btn-outline-light:hover {
+      background: var(--icon-hover-bg);
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
+      transform: translateY(-4px);
+    }
+    
+    body.dark .btn-outline-light:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: #ff7eb3;
-      transform: translateY(-4px);
+      color: #ff7eb3;
     }
 
     /* container */
@@ -1132,7 +1151,7 @@
 
     /* glassmorphism */
     .glass-card {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
       border-radius: 48px;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1268,8 +1287,27 @@
     }
     
     /* Standardized Global Padding Token */
+    /* ----- LUXURY LIGHT & DARK MODES ----- */
     :root {
-      --global-padding-x: clamp(1rem, 5vw, 4rem);
+      --bg-primary: #f6f5fa;
+      --bg-secondary: #eee9f4;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --text-primary: #12101a;
+      --text-secondary: #474354;
+      --text-muted: #7c778c;
+      --border-lux: rgba(18, 16, 26, 0.08);
+      --accent-gold: #ff6097;
+      --accent-terracotta: #ff4880;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 10px 30px rgba(18, 16, 26, 0.05);
+      --btn-outline: #ff4880;
+      --icon-hover-bg: rgba(255, 72, 128, 0.08);
+      --card-glow: 0 20px 40px rgba(18, 16, 26, 0.05);
+      --scroll-track: #eee9f4;
+      --scroll-thumb: #ff4880;
+      --dropdown-bg: rgba(255, 255, 255, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.02);
+      --logo-gradient: linear-gradient(135deg, #12101a, #ff4880);
     }
 
     /* 3. Base interior containers get exactly ONE layer of perfect padding */
@@ -1467,7 +1505,7 @@
   font-size: clamp(3.5rem, 6vw, 6rem);
   line-height: 1.05;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #fff, var(--accent-gold));
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1498,7 +1536,7 @@
   display: flex;
   justify-content: space-around;
   padding: 5rem 2rem;
-  background: #05040a;
+  background: var(--bg-secondary);
   border-top: 1px solid var(--border-lux);
   border-bottom: 1px solid var(--border-lux);
   flex-wrap: wrap;
@@ -1585,6 +1623,12 @@
   position: relative;
   overflow: hidden;
 }
+.h2-cta-island h2 {
+  color: #ffffff !important;
+}
+.h2-cta-island p {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
 </style>
 
 <div class="homepage">
@@ -1670,7 +1714,7 @@
   </section>
 
   <!-- Section 4: Dynamic "Build Your Vibe" Tabs -->
-  <section style="padding: 6rem 2rem; background: rgba(0,0,0,0.4); border-top: 1px solid var(--border-lux);">
+  <section style="padding: 6rem 2rem; background: var(--section-bg-shade); border-top: 1px solid var(--border-lux);">
     <div class="container-custom" style="text-align: center;">
       <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 3rem;">Find Your Occasion</h2>
       <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">

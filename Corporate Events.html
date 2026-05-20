@@ -20,7 +20,31 @@
     }
 
     /* ----- LUXURY LIGHT MODE (Dribbble-quality) ----- */
+    /* ----- LUXURY LIGHT & DARK MODES ----- */
     :root {
+      --global-padding-x: clamp(1.2rem, 6vw, 5rem);
+      --bg-primary: #f6f5fa;
+      --bg-secondary: #eee9f4;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --text-primary: #12101a;
+      --text-secondary: #474354;
+      --text-muted: #7c778c;
+      --border-lux: rgba(18, 16, 26, 0.08);
+      --accent-gold: #ff6097;
+      --accent-terracotta: #ff4880;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 10px 30px rgba(18, 16, 26, 0.05);
+      --btn-outline: #ff4880;
+      --icon-hover-bg: rgba(255, 72, 128, 0.08);
+      --card-glow: 0 20px 40px rgba(18, 16, 26, 0.05);
+      --scroll-track: #eee9f4;
+      --scroll-thumb: #ff4880;
+      --dropdown-bg: rgba(255, 255, 255, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.02);
+      --logo-gradient: linear-gradient(135deg, #12101a, #ff4880);
+    }
+
+    body.dark {
       --bg-primary: #0c0b14;
       --bg-secondary: #05040a;
       --surface-glass: rgba(20, 18, 30, 0.6);
@@ -38,45 +62,19 @@
       --scroll-track: #05040a;
       --scroll-thumb: #ff7eb3;
       --dropdown-bg: rgba(20, 18, 30, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.3);
+      --logo-gradient: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
     }
 
-    body.dark {
-      --bg-primary: #000000;
-      --bg-secondary: #000000;
-      --surface-glass: rgba(0, 0, 0, 0.8);
-      --text-primary: #f0eef7;
-      --text-secondary: #ccc9e6;
-      --text-muted: #8f8ba8;
-      --border-lux: rgba(255, 255, 255, 0.12);
-      --accent-gold: #ff7eb3;
-      --accent-terracotta: #ff758c;
-      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
-      --navbar-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.6);
-      --btn-outline: #ff7eb3;
-      --icon-hover-bg: rgba(255, 126, 179, 0.1);
-      --card-glow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
-      --scroll-track: #000000;
-      --scroll-thumb: #ff7eb3;
-      --dropdown-bg: rgba(0, 0, 0, 0.98);
-      background-color: #000000 !important;
-      background-image: none !important;
-    }
+    
 
-    body.dark section {
-      background-color: #000000 !important;
-      background-image: none !important;
-    }
-
-    body.dark .navbar,
-    body.dark .footer {
-      background: rgba(0, 0, 0, 0.8) !important;
-    }
+    
 
     body {
       font-family: 'Sora', sans-serif;
-      background-color: #0c0b14;
-      background-image: radial-gradient(circle at 0% 30%, #110e1c, #05040a);
-      color: #f0eef7;
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(circle at 0% 30%, var(--bg-secondary), var(--bg-primary));
+      color: var(--text-primary);
       font-weight: 400;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -106,7 +104,7 @@
       font-weight: 800;
       font-size: 1.6rem;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #FFFFFF, #FFC0CB, #FFB3D9);
+      background: var(--logo-gradient);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -124,17 +122,17 @@
     }
 
     .navbar {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
+      box-shadow: var(--navbar-shadow);
       padding: clamp(0.6rem, 2vw, 0.8rem) 0;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 1000;
       width: 100%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid var(--border-lux);
     }
 
     .nav-container {
@@ -186,7 +184,7 @@
       white-space: nowrap;
     }
     .nav-links-center a:hover {
-      color: #ff7eb3;
+      color: var(--accent-gold);
     }
     .nav-links-center a::after {
       content: '';
@@ -203,7 +201,7 @@
       width: 100%;
     }
     .nav-links-center a.active {
-      color: #ff7eb3;
+      color: var(--accent-gold);
     }
     .nav-links-center a.active::after {
       width: 100%;
@@ -314,12 +312,12 @@
     /* hamburger (hidden on wide) - REDUCED SIZE */
     .hamburger {
       display: none;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       font-size: 1.2rem;
       cursor: pointer;
-      color: #ffffff;
+      color: var(--text-primary);
       width: 36px;
       height: 36px;
       align-items: center;
@@ -330,7 +328,7 @@
     body.dark .hamburger {
       color: #ffffff;
       background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.12);
     }
     .hamburger:hover {
       background: var(--icon-hover-bg);
@@ -789,7 +787,7 @@
       width: 100%;
     }
     .studio-card {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
       border-radius: 48px;
       padding: 2.5rem 1.8rem;
@@ -859,9 +857,9 @@
 
     /* ========= PREMIUM FOOTER SECTION ========= */
     .footer {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid var(--border-lux);
       padding: 4rem 2rem 2rem;
       margin-top: 4rem;
       font-family: 'Sora', sans-serif;
@@ -882,6 +880,15 @@
       margin-bottom: 1.5rem;
       color: #ff7eb3;
       letter-spacing: -0.2px;
+    }
+    body:not(.dark) .footer-col h4 {
+      color: var(--accent-terracotta);
+    }
+    body:not(.dark) .footer-col p,
+    body:not(.dark) .footer-col ul,
+    body:not(.dark) .footer-col ul li a,
+    body:not(.dark) .footer-bottom {
+      color: var(--text-secondary);
     }
     .footer-col p, .footer-col ul {
       font-size: 0.85rem;
@@ -1050,9 +1057,9 @@
 
     .btn-outline-light {
       background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border: 1.5px solid var(--btn-outline);
       backdrop-filter: blur(4px);
-      color: white;
+      color: var(--btn-outline);
       box-shadow: none;
       padding: 12px 32px;
       border-radius: 60px;
@@ -1064,8 +1071,9 @@
     }
 
     .btn-outline-light:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #ff7eb3;
+      background: var(--icon-hover-bg);
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
       transform: translateY(-4px);
     }
 
@@ -1087,7 +1095,7 @@
 
     /* glassmorphism */
     .glass-card {
-      background: rgba(20, 18, 30, 0.6);
+      background: var(--surface-glass);
       backdrop-filter: blur(12px);
       border-radius: 48px;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1211,8 +1219,27 @@
       padding-right: 0;
     }
     /* Standardized Global Padding Token */
+    /* ----- LUXURY LIGHT & DARK MODES ----- */
     :root {
-      --global-padding-x: clamp(1rem, 5vw, 4rem);
+      --bg-primary: #f6f5fa;
+      --bg-secondary: #eee9f4;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --text-primary: #12101a;
+      --text-secondary: #474354;
+      --text-muted: #7c778c;
+      --border-lux: rgba(18, 16, 26, 0.08);
+      --accent-gold: #ff6097;
+      --accent-terracotta: #ff4880;
+      --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+      --navbar-shadow: 0 10px 30px rgba(18, 16, 26, 0.05);
+      --btn-outline: #ff4880;
+      --icon-hover-bg: rgba(255, 72, 128, 0.08);
+      --card-glow: 0 20px 40px rgba(18, 16, 26, 0.05);
+      --scroll-track: #eee9f4;
+      --scroll-thumb: #ff4880;
+      --dropdown-bg: rgba(255, 255, 255, 0.98);
+      --section-bg-shade: rgba(0, 0, 0, 0.02);
+      --logo-gradient: linear-gradient(135deg, #12101a, #ff4880);
     }
 
     /* 3. Base interior containers get exactly ONE layer of perfect padding */
@@ -1386,7 +1413,7 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(3.5rem, 8vw, 6rem);
   line-height: 1;
-  background: linear-gradient(135deg, #fff, #ccc9e6);
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1422,7 +1449,7 @@
   padding: 3rem 0;
   border-top: 1px solid rgba(255,255,255,0.05);
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  background: rgba(0,0,0,0.3);
+  background: var(--section-bg-shade);
 }
 .marquee-content {
   display: inline-block;
@@ -1442,7 +1469,7 @@
   gap: 1rem;
 }
 .corp-package {
-  background: linear-gradient(145deg, rgba(20, 18, 30, 0.8), rgba(5, 4, 10, 0.9));
+  background: var(--surface-glass);
   border: 1px solid var(--border-lux);
   border-radius: 40px;
   padding: 3rem;
@@ -1497,28 +1524,77 @@
     </div>
   </section>
 
-  <!-- SECTION 3: Brand Activations (Split) -->
+  <!-- SECTION 3: Strategic Value of Event Décor -->
   <section class="section-spacing container-custom">
-    <div class="brand-activation-grid">
+    <!-- Section Introduction -->
+    <div style="text-align: left; margin-bottom: 5rem;">
+      <span class="glow-text" style="letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; display: block; margin-bottom: 1rem;">Strategic Impact</span>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 3.8rem); color: var(--text-primary); line-height: 1.1; text-align: left;">How Premium Décor Drives Event Success</h2>
+      <p style="color: var(--text-secondary); font-size: 1.15rem; max-width: 750px; margin-top: 1.5rem; line-height: 1.8; text-align: left;">
+        Discover how our custom balloon architectures solve business objectives, enhance event logistics, and capture massive brand engagement.
+      </p>
+    </div>
+
+    <!-- Benefit 1: Brand Visibility -->
+    <div class="brand-activation-grid" style="margin-bottom: 6rem;">
+      <div style="position: relative; height: clamp(300px, 45vh, 480px); border-radius: 32px; overflow: hidden; border: 1px solid var(--border-lux);">
+        <img src="./images/corporate_entrance_arch.png" alt="Corporate Entrance Arch" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
       <div>
-        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1.5rem; color: var(--text-primary); line-height: 1.2;">Stop the Scroll.<br>Stop the Traffic.</h2>
-        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
-          In a world of digital noise, physical brand activations create undeniable buzz. An extravagant balloon installation over your storefront or stage guarantees photos, social media tags, and foot traffic.
+        <span style="letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; display: block; margin-bottom: 0.8rem;">01 / BRAND VISIBILITY & ENTRANCE IMPACT</span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.2rem; color: var(--text-primary); line-height: 1.2; text-align: left;">First Impressions That Define Your Brand Authority</h3>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.8; text-align: left;">
+          In corporate environments, the entry experience sets the tone for the entire gathering. A custom-designed balloon entrance arch matching your company's Pantone colors and brand guidelines transforms a plain doorway into an imposing, high-status gateway. This visual landmark welcomes VIPs, defines event boundaries, and builds immediate brand authority the moment attendees arrive.
         </p>
         <ul style="list-style: none; padding: 0;">
-          <li style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Custom Pantone Matching</li>
-          <li style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Vinyl Logo Decals & Branding</li>
-          <li style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Full Strike & Teardown Services</li>
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Instant architectural visual anchors</li>
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Direct visitor navigation and flow control</li>
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Cohesive color story matching corporate brand guidelines</li>
         </ul>
       </div>
-      <div style="position: relative; height: 500px; border-radius: 40px; overflow: hidden; border: 1px solid var(--border-lux);">
-        <img src="./images/Stop the Scroll Stop the Traffic.jpg" alt="Corporate Activation" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Benefit 2: Audience Engagement -->
+    <div class="brand-activation-grid" style="margin-bottom: 6rem;">
+      <div>
+        <span style="letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; display: block; margin-bottom: 0.8rem;">02 / AUDIENCE ENGAGEMENT & DIGITAL REACH</span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.2rem; color: var(--text-primary); line-height: 1.2; text-align: left;">Social Amplification Through Interactive Photo Zones</h3>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.8; text-align: left;">
+          Modern event success is measured by its digital reach. By integrating asymmetric, organic balloon backdrops with glowing neon signs and custom brand messaging, we construct a dedicated "photo-magnet" zone. Attendees naturally gather to capture and share high-quality selfies on Instagram and LinkedIn. This turns guests into active brand ambassadors, multiplying your organic digital impressions.
+        </p>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Interactive photo opportunities for guests</li>
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> High brand recall via integrated event signage</li>
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Viral user-generated content and hashtag engagement</li>
+        </ul>
+      </div>
+      <div style="position: relative; height: clamp(300px, 45vh, 480px); border-radius: 32px; overflow: hidden; border: 1px solid var(--border-lux);">
+        <img src="./images/corporate_photo_backdrop.png" alt="Corporate Photo Backdrop" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+
+    <!-- Benefit 3: Spatial Design -->
+    <div class="brand-activation-grid">
+      <div style="position: relative; height: clamp(300px, 45vh, 480px); border-radius: 32px; overflow: hidden; border: 1px solid var(--border-lux);">
+        <img src="./images/corporate_brand_activation.png" alt="Corporate Brand Activation" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div>
+        <span style="letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; display: block; margin-bottom: 0.8rem;">03 / SPATIAL DESIGN & SALES INFLUENCE</span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.2rem; color: var(--text-primary); line-height: 1.2; text-align: left;">Guiding Foot Traffic & Accentuating Product Releases</h3>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.8; text-align: left;">
+          Balloon design is a functional tool for spatial flow. For retail spaces and product launches, cascading balloon clouds can be strategically hung to guide the eyes—and the steps—of attendees towards featured exhibits, service counters, or new product stands. Our premium installations help convert large, sterile spaces into engaging journeys, driving foot traffic to target areas and increasing customer retention.
+        </p>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Natural guest routing and floor-space optimization</li>
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Eye-catching focal points around new merchandise</li>
+          <li style="margin-bottom: 0.8rem; color: var(--text-primary); font-size: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 10px;"></i> Warm, welcoming environment that increases dwell time</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- SECTION 4: Why Choose Us (Grid) -->
-  <section style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+  <section style="padding: 6rem 0; background: var(--section-bg-shade);">
     <div class="container-custom">
       <div style="text-align: center; margin-bottom: 4rem;">
         <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--text-primary);">The B2B Standard</h2>
@@ -1552,7 +1628,7 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;">
       <!-- P1 -->
       <div class="corp-package">
-        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 0.5rem;">The Storefront</h3>
+        <h3 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 0.5rem;">The Storefront</h3>
         <p style="color: var(--accent-gold); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px;">GRAND OPENINGS</p>
         <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; min-height: 100px;">
           An impressive exterior arch or cascading storefront garland designed to withstand weather and immediately catch the eye of passersby.
@@ -1565,7 +1641,7 @@
       </div>
       <!-- P2 -->
       <div class="corp-package" style="border-color: rgba(255,126,179,0.3);">
-        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 0.5rem;">The Gala Stage</h3>
+        <h3 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 0.5rem;">The Gala Stage</h3>
         <p style="color: var(--accent-gold); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px;">AWARDS & SUMMITS</p>
         <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; min-height: 100px;">
           Elevate your keynote speakers with an asymmetrical, organic stage backdrop that frames the presentation without distracting from it.
@@ -1608,7 +1684,7 @@
   </section>
 
   <!-- SECTION 7: Final B2B CTA -->
-  <section id="consult" class="final-cta" style="margin: 0 32px 80px 32px; border-radius: 60px; background: rgba(20, 18, 30, 0.6); border: 1px solid var(--border-lux); overflow: hidden; position: relative; backdrop-filter: blur(16px);">
+  <section id="consult" class="final-cta" style="margin: 0 32px 80px 32px; border-radius: 60px; background: var(--surface-glass); border: 1px solid var(--border-lux); overflow: hidden; position: relative; backdrop-filter: blur(16px);">
     <div class="floating-orb" style="width: 300px; height: 300px; right: -50px; bottom: -50px; background: #b77eff; filter: blur(90px); opacity: 0.15;"></div>
     <div class="container-custom" style="padding: 70px 40px; text-align: center; position: relative; z-index: 2;">
       <h2 class="display-head" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem;">Let's Talk Logistics.</h2>
