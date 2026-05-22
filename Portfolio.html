@@ -312,12 +312,12 @@
     /* hamburger (hidden on wide) - REDUCED SIZE */
     .hamburger {
       display: none;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       font-size: 1.2rem;
       cursor: pointer;
-      color: #ffffff;
+      color: var(--text-primary);
       width: 36px;
       height: 36px;
       align-items: center;
@@ -328,7 +328,7 @@
     body.dark .hamburger {
       color: #ffffff;
       background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.12);
     }
     .hamburger:hover {
       background: var(--icon-hover-bg);
